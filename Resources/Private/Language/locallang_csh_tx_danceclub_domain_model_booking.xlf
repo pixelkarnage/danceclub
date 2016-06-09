@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-03-14T09:30:34Z" product-name="danceclub">
+		<header/>
+		<body>
+			<trans-unit id="name.description">
+				<source>The name of the Person booking</source>
+			</trans-unit>
+			<trans-unit id="email.description">
+				<source>contact email</source>
+			</trans-unit>
+			<trans-unit id="dance_style.description">
+				<source>Follower/Leader/Both</source>
+			</trans-unit>
+			<trans-unit id="student.description">
+				<source>student</source>
+			</trans-unit>
+			<trans-unit id="comment.description">
+				<source>User comment on his order/booking</source>
+			</trans-unit>
+			<trans-unit id="amount.description">
+				<source>amount</source>
+			</trans-unit>
+			<trans-unit id="invoice_amount.description">
+				<source>How much is owed still</source>
+			</trans-unit>
+			<trans-unit id="canceled.description">
+				<source>This booking is canceled.</source>
+			</trans-unit>
+			<trans-unit id="events.description">
+				<source>events</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

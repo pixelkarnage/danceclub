@@ -1,0 +1,22 @@
+#ToDo
+#=====================
+
+- Die nächsten Events schön anzeigen
+
+- Booking
+- Make it all Appear nicely in the FrontEnd
+	- News
+
+	- RSS
+	- Newsletter to Gmail import thingy
+	- Kontakt formular
+	- Liste von Lokalitäten
+	- Gut zu wissen?
+	- 
+
+GOAL: Get to the how it was before point!
+
+Implement Features:
+	- Backend: Admin Panel
+	- Backend: when making a registration only show the classes from the selected Kursprogramm!
+	- Implement Min Booking/ Max Bookings

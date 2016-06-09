@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-03-14T09:30:34Z" product-name="danceclub">
+		<header/>
+		<body>
+			<trans-unit id="tx_danceclub_domain_model_event">
+				<source>Event</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.description">
+				<source>description</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.bookable">
+				<source>Bookable</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.price">
+				<source>Price</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.force_partner">
+				<source>Force Partner</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.max_bookings">
+				<source>Max Bookings</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.min_bookings">
+				<source>Min Bookings</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.disco_jokey">
+				<source>Disco Jokey</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.teachers">
+				<source>Teachers</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.location">
+				<source>Location</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup">
+				<source>Event Group</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.subtitle">
+				<source>Subtitle</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.activate_booking">
+				<source>Activate Booking</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.closed_booking_message">
+				<source>Closed Booking Message</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.confirm_booking_message">
+				<source>Confirm Booking Message</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.events">
+				<source>Events</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking">
+				<source>Booking</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.dance_style">
+				<source>Dance Style</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.student">
+				<source>Student</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.comment">
+				<source>Comment</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.amount">
+				<source>Amount</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.invoice_amount">
+				<source>Invoice Amount</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.canceled">
+				<source>Canceled</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.events">
+				<source>Events</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_venue">
+				<source>Venue</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_venue.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_venue.address">
+				<source>Address</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_venue.www">
+				<source>Www</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_type.event_type">
+				<source>Event Type</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.image">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.file">
+				<source>File</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.start_time">
+				<source>Start Time</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.end_time">
+				<source>End Time</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.reoccurence_until">
+				<source>Reoccurence Until</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.reoccurance_type">
+				<source>Reoccurance Type</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

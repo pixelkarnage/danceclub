@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-03-14T09:30:34Z" product-name="danceclub">
+		<header/>
+		<body>
+			<trans-unit id="title.description">
+				<source>The name of the EventGroup</source>
+			</trans-unit>
+			<trans-unit id="subtitle.description">
+				<source>Subtitle</source>
+			</trans-unit>
+			<trans-unit id="activate_booking.description">
+				<source>Default is active. Enables booking of events.</source>
+			</trans-unit>
+			<trans-unit id="description.description">
+				<source>description</source>
+			</trans-unit>
+			<trans-unit id="closed_booking_message.description">
+				<source>Booking is closed Message.</source>
+			</trans-unit>
+			<trans-unit id="confirm_booking_message.description">
+				<source>Confirmation Message for a booking</source>
+			</trans-unit>
+			<trans-unit id="events.description">
+				<source>events</source>
+			</trans-unit>
+			<trans-unit id="image.description">
+				<source>image</source>
+			</trans-unit>
+			<trans-unit id="file.description">
+				<source>file</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

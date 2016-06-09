@@ -1,0 +1,68 @@
+
+<table class="tx-danceclub" >
+<f:if condition="{eventGroup}">
+	<f:then>
+		<tr>
+			<td>
+				<f:translate key="tx_danceclub_domain_model_eventgroup.title" />
+			</td>
+			<td>
+			{eventGroup.title}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<f:translate key="tx_danceclub_domain_model_eventgroup.subtitle" />
+			</td>
+			<td>
+			{eventGroup.subtitle}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<f:translate key="tx_danceclub_domain_model_eventgroup.activate_booking" />
+			</td>
+			<td>
+			{eventGroup.activateBooking}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<f:translate key="tx_danceclub_domain_model_eventgroup.description" />
+			</td>
+			<td>
+			{eventGroup.description -> f:format.html()}
+			</td>
+		</tr>
+	</f:then>
+	<f:else>
+		<p>No eventGroup Selected</p>
+	</f:else>
+</f:if>
+<f:if condition="{events}">
+	<f:then>
+		<f:for each="{events}" as="event">
+		<tr>
+			<td><f:link.action action="show" arguments="{event:event}"> {0:event.name}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{event:event}"> {event.description}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{event:event}"> {event.bookable}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{event:event}"> {event.price}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{event:event}"> {event.forcePartner}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{event:event}"> {event.maxBookings}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{event:event}"> {event.minBookings}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{event:event}"> {event.discoJokey}</f:link.action></td>
+			<td><f:link.action action="edit" arguments="{event:event}">Edit</f:link.action></td>
+			<td><f:link.action action="delete" arguments="{event:event}">Delete</f:link.action></td>
+		</tr>
+		</f:for>
+	</f:then>
+	<f:else>
+		<tr>
+			<td>ERAWR</td>
+			<td>No events in this EventGroup</td>
+			<td></td>
+		</tr>
+	</f:else>
+</f:if>
+	
+</table>

@@ -1,0 +1,84 @@
+
+
+<f:layout name="Default" />
+<f:section name="main">
+<f:flashMessages />
+<div id="column1">
+	<f:if condition="{eventGroup}">
+		<f:then>
+		<h1>{eventGroup.title}</h1> 
+		<h2>{eventGroup.subtitle}</h2> 
+		<div id="ct" class="programminfo"> 
+			{eventGroup.description -> f:format.html()}
+		</f:then>
+		<f:else>
+			<h1>Kein Kursprogramm Aktiv</h1>
+			<h2>plan-T hat im Moment kein Programm geplant.</h2>
+		</f:else>
+	</f:if>
+
+	<f:if condition="{events}">
+		<f:then>
+			<br />
+			<h2>Die Kurse des {eventGroup.title}</h2>
+			</div>
+		<script language="javascript" type="text/javascript">
+		
+
+			function showDetails(obj) {
+	    		var el = document.getElementById(obj);
+	   		 	if ( el.style.display != "none" ) {
+	        		el.style.display = 'none';
+	    		}
+	    		else {
+	       	 		el.style.display = '';
+	    		}
+			}
+
+			
+	    </script>
+
+		<f:render partial="Event/Detail" arguments="{events:events, eventDates:eventDates}" />
+		
+		
+
+		</f:then>
+		<f:else>
+		<p><i>{eventGroup.title} hat keine Kurse.</i></p>
+		</div>
+		</f:else>
+	</f:if>
+</div>
+	<f:if condition="{events}">
+		<f:if condition="{eventGroup.activateBooking}==1">
+			<f:then>
+			<div id="sidebar">
+				<div class="boxcontain">
+					<div class="anmeldung"> 
+						<h1>Kursanmeldung</h1> 
+						<f:render partial="Booking/FormFields" arguments="{events:events, danceStyleOptions:danceStyleOptions, booking:booking, eventGroup:eventGroup}"></f:render>
+					</div>
+					<div class="clear"></div> 
+
+					<div id="infobox">
+						<h2>ACHTUNG:</h2>
+						<p class="bodytext">
+						<ul > 
+							<li>Die Kurse sind leider nicht immer ausgeglichen. Meistens hat es zuwenig F&uuml;hrende; sich mit einem Tanzpartner anzumelden ist deswegen vorteilhaft.</li> 
+							<li>Diese Kursanmeldung gilt ausschliesslich f&uuml;r DICH, Paare m&uuml;ssen sich separat Anmelden.</li> 
+							<li>Die Anmeldung ist verbindlich, eine Best&auml;tigung zum Eingang deiner Anmeldung bekommst du per eMail.</li> 
+							<li>plan-T ist non-Profit orientiert. Bei zu wenig Anmeldung kann ein Kurs per eMail abgesagt werden.</li>
+						</ul>
+						</p>
+					</div>
+				</div>
+			</div>
+			</f:then>
+			<f:else>
+			<div id="sidebar">
+				<div class="boxcontain"><h1>Anmeldung ist Deaktiviert.</h1>{eventGroup.closedBookingMessage}</div>
+			</div>
+			</f:else>
+		</f:if>
+	</f:if>
+</f:section>

@@ -1,0 +1,30 @@
+
+plugin.tx_danceclub_danceclub {
+	view {
+		# cat=plugin.tx_danceclub_danceclub/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:danceclub/Resources/Private/Templates/
+		# cat=plugin.tx_danceclub_danceclub/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:danceclub/Resources/Private/Partials/
+		# cat=plugin.tx_danceclub_danceclub/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:danceclub/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_danceclub_danceclub//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}
+
+module.tx_danceclub_danceclubadmin {
+	view {
+		# cat=module.tx_danceclub_danceclubadmin/file; type=string; label=Path to template root (BE)
+		templateRootPath = EXT:danceclub/Resources/Private/Backend/Templates/
+		# cat=module.tx_danceclub_danceclubadmin/file; type=string; label=Path to template partials (BE)
+		partialRootPath = EXT:danceclub/Resources/Private/Backend/Partials/
+		# cat=module.tx_danceclub_danceclubadmin/file; type=string; label=Path to template layouts (BE)
+		layoutRootPath = EXT:danceclub/Resources/Private/Backend/Layouts/
+	}
+	persistence {
+		# cat=module.tx_danceclub_danceclubadmin//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}

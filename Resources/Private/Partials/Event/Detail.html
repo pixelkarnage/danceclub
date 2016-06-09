@@ -1,0 +1,48 @@
+
+
+<f:if condition="{events -> f:count()}>=1">
+	<f:then>
+		<f:for each="{events}" as="event">
+			<f:if condition="{event.bookable}">
+			<f:then>
+				<div class="kurs">
+					<a onclick="showDetails('K{event.uid}');" title="Kursbeschreibung und Info anzeigen" class="detailinfo">Details<br />An/Ab</a>
+					<h3>{event.name}</h3>
+					<div id="K{event.uid}" style="display:normal;">
+						<f:if condition="{event.teachers -> f:count()}>=1">
+							<f:then>
+								<h4> mit <f:for each="{event.teachers}" as="teacher" iteration="iterator">{teacher.name} <f:if condition="{iterator.isLast}"><f:then></f:then><f:else> &amp; </f:else></f:if></f:for></h4>
+							</f:then>
+							<f:else></f:else>
+						</f:if>
+						{event.description -> f:format.html()}
+						<ul class="right"> 
+							<li class="wann title">Wann?</li>
+							<f:for each="{eventDates}" as="dates">
+							<f:for each="{dates}" as="date">
+								<f:if condition="{date.foreignUid}=={event.uid}">
+								<li><f:format.date format="d.m.Y">{date.startDate}</f:format.date>, <f:format.date format="H<\s\up>i</\s\up>">{date.startTime}</f:format.date>-<f:format.date format="H<\s\up>i</\s\up>">{date.endTime}</f:format.date></li>
+								</f:if>
+							</f:for>
+						</f:for></li> 
+							<f:if condition="{event.venues -> f:count()}>=1">
+								<f:then>
+									<li class="title">Wo?</li>
+									<f:for each="{event.venues}" as="venue" iteration="iterator"><li>{venue.name}</li></f:for>
+								</f:then>
+								<f:else></f:else>
+							</f:if>
+							<f:if condition="{event.price}">
+								<f:then>
+								<li class="title">Preis</li>
+								<li class="price">{event.price}.-</li>
+								</f:then>
+							</f:if>
+						</ul>
+					</div>
+				</div>
+			</f:then>
+			</f:if>
+		</f:for>
+	</f:then>
+</f:if>

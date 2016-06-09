@@ -1,0 +1,69 @@
+<T3DataStructure>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Einstellungen</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<switchableControllerActions>
+						<TCEforms>
+							<label>Select function</label>
+							<onChange>reload</onChange>
+							<config>
+								<type>select</type>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">Ein Kursprogramm Anzeigen</numIndex>
+										<numIndex index="1">EventGroup->show;EventGroup->createBooking;</numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">Das aktuelle Kursprogramm Anzeigen</numIndex>
+										<numIndex index="1">EventGroup->showLatest;EventGroup->createBooking;</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">Kursregistration Verarbeitung</numIndex>
+										<numIndex index="1">Booking->create;EventGroup->show</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</switchableControllerActions>
+					<settings.eventgroup>
+						<TCEforms>
+		        			<label>Kursprogramm Auswählen</label>
+		        			<displayCond>FIELD:switchableControllerActions:=:EventGroup->show;EventGroup->createBooking;</displayCond>
+		       			 	<config>
+		       			    	<type>select</type>
+								<foreign_table>tx_danceclub_domain_model_eventgroup</foreign_table>
+								<foreign_table_where> ORDER BY tx_danceclub_domain_model_eventgroup.crdate DESC</foreign_table_where>
+								<size>10</size>
+								<minitems>1</minitems>
+								<maxitems>1</maxitems>
+								<multiple>0</multiple>
+								<renderType>selectSingle</renderType>
+		        			</config>
+		    			</TCEforms>
+    				</settings.eventgroup>
+    				<settings.eventtypes>
+						<TCEforms>
+		        			<label>Welche Events/Kurse sollen angezeigt werden?</label>
+		        			<default>Für Tickets eines Marathons zb. "Special" die Kategorie Special wird dann unter Events nicht als zusätzlicher Event angezeigt.</default>
+		       			 	<config>
+		       			    	<type>select</type>
+								<foreign_table>tx_danceclub_domain_model_type</foreign_table>
+								<foreign_table_where> ORDER BY tx_danceclub_domain_model_type.event_type DESC</foreign_table_where>
+								<size>10</size>
+								<minitems>1</minitems>
+								<maxitems>50</maxitems>
+								<multiple>0</multiple>
+								<renderType>selectMultipleSideBySide</renderType>
+		        			</config>
+		    			</TCEforms>
+    				</settings.eventtypes>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

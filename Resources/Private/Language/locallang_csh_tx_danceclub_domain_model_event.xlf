@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-03-14T09:30:34Z" product-name="danceclub">
+		<header/>
+		<body>
+			<trans-unit id="name.description">
+				<source>name your event.</source>
+			</trans-unit>
+			<trans-unit id="description.description">
+				<source>Describe your event.</source>
+			</trans-unit>
+			<trans-unit id="bookable.description">
+				<source>Is this event Bookable?</source>
+			</trans-unit>
+			<trans-unit id="price.description">
+				<source>set a participation fee.</source>
+			</trans-unit>
+			<trans-unit id="force_partner.description">
+				<source>only accept booking with a dance partner.</source>
+			</trans-unit>
+			<trans-unit id="max_bookings.description">
+				<source>maximum participants</source>
+			</trans-unit>
+			<trans-unit id="min_bookings.description">
+				<source>minimum participants</source>
+			</trans-unit>
+			<trans-unit id="disco_jokey.description">
+				<source>The DJ for this Event, if there is any known.</source>
+			</trans-unit>
+			<trans-unit id="teachers.description">
+				<source>Personel teaching at this event</source>
+			</trans-unit>
+			<trans-unit id="type.description">
+				<source>Type of event. (Practica, Milonga etc)</source>
+			</trans-unit>
+			<trans-unit id="location.description">
+				<source>The place it shall happen</source>
+			</trans-unit>
+			<trans-unit id="start_time.description">
+				<source>startTime</source>
+			</trans-unit>
+			<trans-unit id="end_time.description">
+				<source>endTime</source>
+			</trans-unit>
+			<trans-unit id="reoccurence_until.description">
+				<source>reoccurenceUntil</source>
+			</trans-unit>
+			<trans-unit id="reoccurance_type.description">
+				<source>Daily, Weekly, Monthly etc.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
