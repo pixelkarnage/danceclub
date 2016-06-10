@@ -21,7 +21,7 @@ if (TYPO3_MODE === 'BE') {
 		'',						// Position
 		array(
 			'Booking' => 'list, edit, new, update',
-			'EventGroup' => 'list, edit, new, update',
+			'DanceClub' => 'list, edit, new, update',
 			
 		),
 		array(

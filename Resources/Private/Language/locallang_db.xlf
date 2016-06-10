@@ -111,6 +111,12 @@
 			<trans-unit id="tx_danceclub_domain_model_booking.student">
 				<source>Student</source>
 			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.true">
+				<source>Ja</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.false">
+				<source>Nein</source>
+			</trans-unit>
 			<trans-unit id="tx_danceclub_domain_model_booking.comment">
 				<source>Comment</source>
 			</trans-unit>

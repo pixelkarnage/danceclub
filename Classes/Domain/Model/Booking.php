@@ -246,7 +246,31 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->amount;
     }
+
+    /**
+     * increases the amount by $increase
+     * 
+     * @param float $increase
+     * @return float $amount
+     */
+    public function increaseAmount($increase)
+    {
+        $this->amount = $this->amount + $increase;
+        return $this->amount;
+    }
     
+    /**
+     * Returns the amount
+     * 
+     * @param float $increase
+     * @return float $amount
+     */
+    public function decreaseAmount($decrease)
+    {
+        $this->amount = $this->amount - $decrease;
+        return $this->amount;
+    }
+
     /**
      * Sets the amount
      * 
@@ -267,7 +291,31 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->invoiceAmount;
     }
+   
+    /**
+     * increases the invoiceAmount by $increase
+     * 
+     * @param float $increase
+     * @return float $invoiceAmount
+     */
+    public function increaseInvoiceAmount($increase)
+    {
+        $this->invoiceAmount = $this->invoiceAmount + $increase;
+        return $this->invoiceAmount;
+    }
     
+    /**
+     * Returns the invoiceAmount
+     * 
+     * @param float $increase
+     * @return float $invoiceAmount
+     */
+    public function decreaseInvoiceAmount($decrease)
+    {
+        $this->invoiceAmount = $this->invoiceAmount + $decrease;
+        return $this->invoiceAmount;
+    }
+
     /**
      * Sets the invoiceAmount
      * 
@@ -278,7 +326,29 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->invoiceAmount = $invoiceAmount;
     }
+
+    /**
+     * apply reduction
+     * 
+     * @param float $percentage in 0.x format
+     * @return void
+     */
+    public function applyReductionInvoiceAmount($percentage)
+    {
+        $this->invoiceAmount = $this->invoiceAmount*$percentage;
+    }
     
+    /**
+     * apply reduction
+     * 
+     * @param float $percentage in 0.x format
+     * @return void
+     */
+    public function applyReductionAmount($percentage)
+    {
+        $this->amount = $this->amount*$percentage;
+    }
+
     /**
      * Returns the canceled
      * 

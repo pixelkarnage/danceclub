@@ -27,7 +27,7 @@ namespace PlanT\Danceclub\Tests\Unit\Controller;
 /**
  * Test case for class PlanT\Danceclub\Controller\EventController.
  *
- * @author Samuel Scherer <trashcash@gmail.com>
+ * @author Samuel Scherer <samuel.scherer@protonmail.ch>
  */
 class EventControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {

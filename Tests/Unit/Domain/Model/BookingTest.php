@@ -32,7 +32,7 @@ namespace PlanT\Danceclub\Tests\Unit\Domain\Model;
  * @copyright Copyright belongs to the respective authors
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
- * @author Samuel Scherer <trashcash@gmail.com>
+ * @author Samuel Scherer <samuel.scherer@protonmail.ch>
  */
 class BookingTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {

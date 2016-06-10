@@ -1,4 +1,4 @@
-<f:form method="post" object="{Booking}" name="newBooking" action="createBooking">
+<f:form action="createBooking" name="newBooking" method="post" object="{booking}">
 	<h4>Kontakt Angaben</h4>
 	<f:form.textfield property="name" id="name" /><label for="name"> <f:translate key="tx_danceclub_domain_model_booking.name" /></label><br />
 	<f:form.textfield property="email" id="email" /><label for="email"> <f:translate key="tx_danceclub_domain_model_booking.email" /></label><br />
@@ -17,7 +17,7 @@
 			<f:for each="{events}" as="event">
 				<f:if condition="{event.bookable}">
 					<f:then>
-						<f:form.checkbox property="events" value="{event.uid}" id="{event.uid}" /><label for="{event.uid}">{event.name}</label><br />
+						<f:form.checkbox value="{event}" property="events" id="event{event.uid}" multiple="true" /><label for="event{event.uid}">{event.name}</label><br />
 					</f:then>
 				</f:if>
 			</f:for>

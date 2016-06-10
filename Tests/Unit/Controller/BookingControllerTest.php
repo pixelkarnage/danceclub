@@ -27,7 +27,7 @@ namespace PlanT\Danceclub\Tests\Unit\Controller;
 /**
  * Test case for class PlanT\Danceclub\Controller\BookingController.
  *
- * @author Samuel Scherer <trashcash@gmail.com>
+ * @author Samuel Scherer <samuel.scherer@protonmail.ch>
  */
 class BookingControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {

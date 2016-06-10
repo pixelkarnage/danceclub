@@ -140,7 +140,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->teachers = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->types = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->venues = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->event_groups = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->eventGroups = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
     
     /**
@@ -472,18 +472,18 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
     
     /**
-     * Removes a event_groups
+     * Removes a eventGroup
      * 
-     * @param \PlanT\Danceclub\Domain\Model\EventGroup $event_groupsToRemove The Event to be removed
+     * @param \PlanT\Danceclub\Domain\Model\EventGroup $eventGroupsToRemove The Event to be removed
      * @return void
      */
-    public function removeEventGroups(\PlanT\Danceclub\Domain\Model\EventGroup $eventToRemove)
+    public function removeEventGroups(\PlanT\Danceclub\Domain\Model\EventGroup $eventGroupToRemove)
     {
-        $this->eventGroups->detach($eventGroupsToRemove);
+        $this->eventGroups->detach($eventGroupToRemove);
     }
     
     /**
-     * Returns the event_groups
+     * Returns the eventGroups
      * 
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\PlanT\Danceclub\Domain\Model\EventGroup> $eventGroups
      */

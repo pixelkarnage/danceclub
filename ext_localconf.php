@@ -7,11 +7,11 @@ if (!defined('TYPO3_MODE')) {
 	'PlanT.' . $_EXTKEY,
 	'Danceclub',
 	array(
-		'EventGroup' => 'show,showLatest,createBooking',
+		'DanceClub' => 'show,showLatest,createBooking',
 		
 	),
 	// non-cacheable actions
 	array(
-		'EventGroup' => '',
+		'DanceClub' => '',
 	)
 );

@@ -11,11 +11,11 @@
  ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'Tango Club',
+	'title' => 'Dance Club',
 	'description' => 'Book partner dance classes or simply check for updates on events. It\'s a small management tool for Dance Schools.',
 	'category' => 'misc',
 	'author' => 'Samuel Scherer',
-	'author_email' => 'trashcash@gmail.com',
+	'author_email' => 'samuel.scherer@protonmail.ch',
 	'state' => 'alpha',
 	'internal' => '',
 	'uploadfolder' => '0',
@@ -24,7 +24,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'version' => '0.1',
 	'constraints' => array(
 		'depends' => array(
-			'typo3' => '6.2',
+			'typo3' => '7.6',
 		),
 		'conflicts' => array(
 		),

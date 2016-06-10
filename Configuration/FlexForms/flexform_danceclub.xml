@@ -16,15 +16,11 @@
 								<items>
 									<numIndex index="0">
 										<numIndex index="0">Ein Kursprogramm Anzeigen</numIndex>
-										<numIndex index="1">EventGroup->show;EventGroup->createBooking;</numIndex>
+										<numIndex index="1">DanceClub->show;DanceClub->createBooking;</numIndex>
 									</numIndex>
 									<numIndex index="1">
 										<numIndex index="0">Das aktuelle Kursprogramm Anzeigen</numIndex>
-										<numIndex index="1">EventGroup->showLatest;EventGroup->createBooking;</numIndex>
-									</numIndex>
-									<numIndex index="2">
-										<numIndex index="0">Kursregistration Verarbeitung</numIndex>
-										<numIndex index="1">Booking->create;EventGroup->show</numIndex>
+										<numIndex index="1">DanceClub->showLatest;DanceClub->createBooking;</numIndex>
 									</numIndex>
 								</items>
 							</config>
@@ -33,7 +29,7 @@
 					<settings.eventgroup>
 						<TCEforms>
 		        			<label>Kursprogramm Auswählen</label>
-		        			<displayCond>FIELD:switchableControllerActions:=:EventGroup->show;EventGroup->createBooking;</displayCond>
+		        			<displayCond>FIELD:switchableControllerActions:=:DanceClub->show;DanceClub->createBooking;</displayCond>
 		       			 	<config>
 		       			    	<type>select</type>
 								<foreign_table>tx_danceclub_domain_model_eventgroup</foreign_table>

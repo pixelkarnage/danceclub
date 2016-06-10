@@ -2,8 +2,12 @@
 #=====================
 
 - Die nächsten Events schön anzeigen
-
+- Test Extension  
 - Booking
+- Language of Model in Backend
+- Make it true English/German
+- Dokumentation
+
 - Make it all Appear nicely in the FrontEnd
 	- News
 
@@ -14,9 +18,10 @@
 	- Gut zu wissen?
 	- 
 
-GOAL: Get to the how it was before point!
-
+!! -- GOAL: Get to the 'how it was before' point!
+Then:
 Implement Features:
 	- Backend: Admin Panel
-	- Backend: when making a registration only show the classes from the selected Kursprogramm!
+	- is it possible to calenderize inside danceclub?
+	- Backend: when making a registration only show the classes from the selected Kursprogramm! userProc something something
 	- Implement Min Booking/ Max Bookings

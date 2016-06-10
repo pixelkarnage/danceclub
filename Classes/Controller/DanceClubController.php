@@ -28,15 +28,18 @@ namespace PlanT\Danceclub\Controller;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Error\Error;
+use TYPO3\CMS\Extbase\Error\Result;
+
 use PlanT\Danceclub\Domain\Model\Event;
 use PlanT\Danceclub\Domain\Model\Booking;
+
 use HDNET\Calendarize\Domain\Model\Index;
 
-
 /**
- * EventGroupController
+ * DanceClubController
  */
-class EventGroupController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class DanceClubController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
 
     /**
@@ -89,16 +92,63 @@ class EventGroupController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
     public function initializeCreateBookingAction() {
         //$this->request->getArgument('eventGroup');
         //$propertyMappingConfiguration = $this->arguments['newBooking']->getPropertyMappingConfiguration();
-        //$propertyMappingConfiguration->skipProperties('events');
+        //$propertyMappingConfiguration->forProperty('events')->allowAllProperties();
+        //$propertyMappingConfiguration->forProperty('0')->allowAllProperties();
+        //$propertyMappingConfiguration->allowProperties('events');
+        //$propertyMappingConfiguration->allowProperties('0');
+        //$propertyMappingConfiguration->setTypeConverterOption('TYPO3\CMS\Extbase\Property\TypeConverter\PersistentObjectConverter', \TYPO3\CMS\Extbase\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
         //$propertyMappingConfiguration->skipUnknownProperties();
-       // $propertyMappingConfiguration->allowProperties('events');
+        //$propertyMappingConfiguration->allowProperties('events');
         //$propertyMappingConfiguration->forProperty('*');
+      // $this->arguments['newBooking']->getPropertyMappingConfiguration()->skipProperties('events');
+      // $this->arguments['newBooking']->getPropertyMappingConfiguration()->allowCreationForSubProperty('events');
+       //$this->arguments['newBooking']->getPropertyMappingConfiguration()->forProperty('events.*')->allowAllProperties();
 
+        $this->arguments['newBooking']->getPropertyMappingConfiguration()->skipProperties('events');
 
+        //$typeConverter = $this->arguments['newBooking']->getPropertyMappingConfiguration()->getTypeConverter();
+        //$this->arguments['newBooking']->getPropertyMappingConfiguration()->setTypeConverterOption($typeConverter, 'mapUnknownProperties', true);
+       //var_dump( $this->arguments['newBooking']->getPropertyMappingConfiguration());
+       //var_dump($typeConverter);
+       //var_dump($this->request->getArguments());
 
-        //var_dump($this->request->getArguments());
+       /*if($this->request->hasArgument('newBooking')) {
+            $newBooking = $this->request->getArgument('newBooking');
+            $propertyMappingConfiguration = $this->arguments->getArgument('newBooking')->getPropertyMappingConfiguration();
 
-       
+            if(!empty($newBooking['events'])) {
+                $propertyMappingConfiguration->forProperty('events')->allowAllProperties();
+                $propertyMappingConfiguration->allowModificationForSubProperty('events');
+
+                foreach($newBooking['events'] as $positionIndex => $positionPropertyArray) {
+                    $propertyPath = 'events.' . $positionIndex;  
+                    $propertyMappingConfiguration->forProperty($propertyPath)->allowAllProperties();
+                    $propertyMappingConfiguration->allowCreationForSubProperty($propertyPath);
+                    $propertyMappingConfiguration->allowModificationForSubProperty($propertyPath);
+                } // end foreach
+            } // end if(!empty)
+        } // end if(request->hasArgument)*/
+
+        //print_r($newBooking);
+    }
+
+    /**
+     * Initialize stuff
+     * 
+     * @return void
+     */
+    protected function initializeActionMethodValidators() {
+        if ($this->actionMethodName == 'creatBookingAction') {
+            parent::initializeActionMethodValidators();
+            
+            $newBooking = $this->arguments['newBooking'];
+            
+            $validator = $newBooking->getValidator();
+
+            $NewBookingValidator = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('PlanT\Danceclub\Domain\Validation\Validator\NewBookingValidator',
+            array('options' => ''));
+            $validator->addValidator($NewBookingValidator);
+        }
     }
 
     /**
@@ -151,61 +201,31 @@ class EventGroupController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
      * Create a new Booking from FE Input
      * 
      * @param \PlanT\Danceclub\Domain\Model\Booking $newBooking
+     * @validate $newBooking \PlanT\Danceclub\Domain\Validation\Validator\NewBookingValidator
      * @return void
      */
     public function createBookingAction(\PlanT\Danceclub\Domain\Model\Booking $newBooking)
     {
-        //$bookingData = $this->request->getArgument('newBooking');
-        //$events = $this->eventRepository->findAllByUid($bookingData['events']['__identity']);
+        $bookingData = $this->request->getArgument('newBooking');
+        foreach ($bookingData['events']['__identity'] as $eventUid){
+            $event = $this->eventRepository->findByUid($eventUid);
+            //print_r($event->getPrice());
+            $newBooking->increaseAmount($event->getPrice());
+            $newBooking->increaseInvoiceAmount($event->getPrice());
+            $newBooking->addEvent($event);
+        }
 
-        //print_r($bookingData['events']['__identity']);
-        //print_r($this->request->getArguments());
-        /*/ Only Continue with a valid EventGroup
-        if (is_numeric($this->request->getArgument('eventGroup')) && !empty($this->request->getArgument('eventGroup'))){
-
-            // Check if Booking is allowed
-            $eventGroup = $this->eventGroupRepository->findByUid($this->request->getArgument('eventGroup'));
-            if($eventGroup && $eventGroup->getActivateBooking()==true) {
-
-                $bookingData = $this->request->getArgument('newBooking');
-                //print_r($bookingData);
-                //Start Mapping the Booking Object
-                $newBooking->setName($bookingData['name']);
-                $newBooking->setEmail($bookingData['email']);
-                $newBooking->setDanceStyle($bookingData['danceStyle']);
-                $newBooking->setStudent($bookingData['student']);
-                $newBooking->setComment($bookingData['comment']);
-
-                if(!empty($bookingData['events']['__identity'])){
-                    $events = $this->eventRepository->findAllByUid($bookingData['events']['__identity']);
-                    $newBooking->setEvents($events);
-                    //print_r($events);
-                } else {
-                    // reload to change data
-                    //$this->redirect('show', 'EventGroup', 'danceclub', null, $pageUid=null, '');
-                }
-
-                //$newBooking->setEvents($events);
-                //$newBooking->setAmount($amount);
-                //$newBooking->setInvoiceAmount($amount);  
-                
-                //print_r($this->request->getArguments());
-
-                //$this->bookingRepository->add($newBooking);
-            }
-
-            
-
-        } else {
-            //fluid flag/message
-        }*/
+        if(count($bookingData['events']['__identity']) > 1) {
+            $newBooking->applyReductionAmount(0.9);
+            $newBooking->applyReductionInvoiceAmount(0.9); 
+        }
         
         $this->bookingRepository->add($newBooking);
-        //var_dump($newBooking);
+        //var_dump();
 
         $multipleArray = Array(
-            'booking' => $newBooking,
-            'error' => $error
+            'booking' => $newBooking
+            //'error' => $error
             );
         
         $this->view->assignMultiple($multipleArray);
