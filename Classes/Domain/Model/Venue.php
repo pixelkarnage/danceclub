@@ -44,7 +44,6 @@ class Venue extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * The address. (Streetname Housnumber, PLZ Ort)
      * 
      * @var string
-     * @validate NotEmpty
      */
     protected $address = '';
     

@@ -97,6 +97,7 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * events
      * 
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\PlanT\Danceclub\Domain\Model\Event>
+     * @validate NotEmpty
      */
     protected $events = NULL;
     
@@ -253,7 +254,7 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param float $increase
      * @return float $amount
      */
-    public function increaseAmount($increase)
+    public function increaseAmountBy($increase)
     {
         $this->amount = $this->amount + $increase;
         return $this->amount;
@@ -265,7 +266,7 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param float $increase
      * @return float $amount
      */
-    public function decreaseAmount($decrease)
+    public function decreaseAmountBy($decrease)
     {
         $this->amount = $this->amount - $decrease;
         return $this->amount;
@@ -298,7 +299,7 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param float $increase
      * @return float $invoiceAmount
      */
-    public function increaseInvoiceAmount($increase)
+    public function increaseInvoiceAmountBy($increase)
     {
         $this->invoiceAmount = $this->invoiceAmount + $increase;
         return $this->invoiceAmount;
@@ -310,7 +311,7 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param float $increase
      * @return float $invoiceAmount
      */
-    public function decreaseInvoiceAmount($decrease)
+    public function decreaseInvoiceAmountBy($decrease)
     {
         $this->invoiceAmount = $this->invoiceAmount + $decrease;
         return $this->invoiceAmount;
@@ -333,20 +334,32 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param float $percentage in 0.x format
      * @return void
      */
-    public function applyReductionInvoiceAmount($percentage)
+    public function invoiceAmountReductionBy($percentage)
     {
-        $this->invoiceAmount = $this->invoiceAmount*$percentage;
+        $this->invoiceAmount = $this->roundUpToAny($this->invoiceAmount*$percentage);
     }
     
+    /**
+     * Round upt to any Number
+     * 
+     * @param float $n
+     * @param int $x
+     * @return int
+     */
+    private function roundUpToAny($n,$x=5) 
+    {
+        return (round($n)%$x === 0) ? round($n) : round(($n+$x/2)/$x)*$x;
+    }
+
     /**
      * apply reduction
      * 
      * @param float $percentage in 0.x format
      * @return void
      */
-    public function applyReductionAmount($percentage)
+    public function amountReductionBy($percentage)
     {
-        $this->amount = $this->amount*$percentage;
+        $this->amount = $this->roundUpToAny($this->amount*$percentage);
     }
 
     /**

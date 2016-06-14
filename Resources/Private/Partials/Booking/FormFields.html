@@ -1,7 +1,15 @@
+<f:form.validationResults>
+  <f:if condition="{validationResults.flattenedErrors}">
+      <f:for each="{validationResults.flattenedErrors}" as="errors" key="propertyPath">
+		{propertyPath}<f:for each="{errors}" as="error">{error.code}: {error}</f:for>
+      </f:for>
+    
+  </f:if>
+</f:form.validationResults>
 <f:form action="createBooking" name="newBooking" method="post" object="{booking}">
 	<h4>Kontakt Angaben</h4>
-	<f:form.textfield property="name" id="name" /><label for="name"> <f:translate key="tx_danceclub_domain_model_booking.name" /></label><br />
-	<f:form.textfield property="email" id="email" /><label for="email"> <f:translate key="tx_danceclub_domain_model_booking.email" /></label><br />
+	<f:form.textfield property="name" id="name" required="true" /><label for="name"> <f:translate key="tx_danceclub_domain_model_booking.name" /></label><br />
+	<f:form.textfield property="email" id="email" required="true" /><label for="email"> <f:translate key="tx_danceclub_domain_model_booking.email" /></label><br />
 	<h4>Tanzstil</h4>
 	<f:if condition="{danceStyleOptions}">
 	<f:then>
@@ -17,7 +25,7 @@
 			<f:for each="{events}" as="event">
 				<f:if condition="{event.bookable}">
 					<f:then>
-						<f:form.checkbox value="{event}" property="events" id="event{event.uid}" multiple="true" /><label for="event{event.uid}">{event.name}</label><br />
+						<f:form.checkbox value="{event.uid}" property="events" id="event{event.uid}" multiple="true" /><label for="event{event.uid}">{event.name}</label><br />
 					</f:then>
 				</f:if>
 			</f:for>
@@ -25,8 +33,7 @@
 		<f:else></f:else>
 	</f:if>
 	<h4>Bemerkung</h4>
-	<f:form.textarea property="comment" cols="28" rows="5" /><br />
+	<f:form.textarea name="comment" cols="28" rows="5" /><br />
 	<f:form.hidden name="eventGroup" value="{eventGroup.uid}" />
 	<f:form.submit value="Anmelden!" />
 </f:form>
-

@@ -85,73 +85,6 @@ class DanceClubController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     }
 
     /**
-     * initialize create action
-     *
-     * @return void
-     */
-    public function initializeCreateBookingAction() {
-        //$this->request->getArgument('eventGroup');
-        //$propertyMappingConfiguration = $this->arguments['newBooking']->getPropertyMappingConfiguration();
-        //$propertyMappingConfiguration->forProperty('events')->allowAllProperties();
-        //$propertyMappingConfiguration->forProperty('0')->allowAllProperties();
-        //$propertyMappingConfiguration->allowProperties('events');
-        //$propertyMappingConfiguration->allowProperties('0');
-        //$propertyMappingConfiguration->setTypeConverterOption('TYPO3\CMS\Extbase\Property\TypeConverter\PersistentObjectConverter', \TYPO3\CMS\Extbase\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
-        //$propertyMappingConfiguration->skipUnknownProperties();
-        //$propertyMappingConfiguration->allowProperties('events');
-        //$propertyMappingConfiguration->forProperty('*');
-      // $this->arguments['newBooking']->getPropertyMappingConfiguration()->skipProperties('events');
-      // $this->arguments['newBooking']->getPropertyMappingConfiguration()->allowCreationForSubProperty('events');
-       //$this->arguments['newBooking']->getPropertyMappingConfiguration()->forProperty('events.*')->allowAllProperties();
-
-        $this->arguments['newBooking']->getPropertyMappingConfiguration()->skipProperties('events');
-
-        //$typeConverter = $this->arguments['newBooking']->getPropertyMappingConfiguration()->getTypeConverter();
-        //$this->arguments['newBooking']->getPropertyMappingConfiguration()->setTypeConverterOption($typeConverter, 'mapUnknownProperties', true);
-       //var_dump( $this->arguments['newBooking']->getPropertyMappingConfiguration());
-       //var_dump($typeConverter);
-       //var_dump($this->request->getArguments());
-
-       /*if($this->request->hasArgument('newBooking')) {
-            $newBooking = $this->request->getArgument('newBooking');
-            $propertyMappingConfiguration = $this->arguments->getArgument('newBooking')->getPropertyMappingConfiguration();
-
-            if(!empty($newBooking['events'])) {
-                $propertyMappingConfiguration->forProperty('events')->allowAllProperties();
-                $propertyMappingConfiguration->allowModificationForSubProperty('events');
-
-                foreach($newBooking['events'] as $positionIndex => $positionPropertyArray) {
-                    $propertyPath = 'events.' . $positionIndex;  
-                    $propertyMappingConfiguration->forProperty($propertyPath)->allowAllProperties();
-                    $propertyMappingConfiguration->allowCreationForSubProperty($propertyPath);
-                    $propertyMappingConfiguration->allowModificationForSubProperty($propertyPath);
-                } // end foreach
-            } // end if(!empty)
-        } // end if(request->hasArgument)*/
-
-        //print_r($newBooking);
-    }
-
-    /**
-     * Initialize stuff
-     * 
-     * @return void
-     */
-    protected function initializeActionMethodValidators() {
-        if ($this->actionMethodName == 'creatBookingAction') {
-            parent::initializeActionMethodValidators();
-            
-            $newBooking = $this->arguments['newBooking'];
-            
-            $validator = $newBooking->getValidator();
-
-            $NewBookingValidator = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('PlanT\Danceclub\Domain\Validation\Validator\NewBookingValidator',
-            array('options' => ''));
-            $validator->addValidator($NewBookingValidator);
-        }
-    }
-
-    /**
      * This showAction shows the Information and Booking-Form for a by Flexform chosen eventGroup
      * 
      * @param \PlanT\Danceclub\Domain\Model\Booking $newBooking
@@ -201,31 +134,35 @@ class DanceClubController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
      * Create a new Booking from FE Input
      * 
      * @param \PlanT\Danceclub\Domain\Model\Booking $newBooking
-     * @validate $newBooking \PlanT\Danceclub\Domain\Validation\Validator\NewBookingValidator
      * @return void
      */
     public function createBookingAction(\PlanT\Danceclub\Domain\Model\Booking $newBooking)
     {
-        $bookingData = $this->request->getArgument('newBooking');
-        foreach ($bookingData['events']['__identity'] as $eventUid){
-            $event = $this->eventRepository->findByUid($eventUid);
-            //print_r($event->getPrice());
-            $newBooking->increaseAmount($event->getPrice());
-            $newBooking->increaseInvoiceAmount($event->getPrice());
-            $newBooking->addEvent($event);
+        foreach ($newBooking->getEvents() as $event){
+            $newBooking->increaseAmountBy($event->getPrice());
+            $newBooking->increaseInvoiceAmountBy($event->getPrice());
         }
 
-        if(count($bookingData['events']['__identity']) > 1) {
-            $newBooking->applyReductionAmount(0.9);
-            $newBooking->applyReductionInvoiceAmount(0.9); 
+        if (is_numeric($this->request->getArgument('eventGroup')) && !empty($this->request->getArgument('eventGroup'))){
+            $eventGroup = $this->eventGroupRepository->findByUid($this->request->getArgument('eventGroup'));
+            
+            if(count($newBooking->getEvents()) > 1)
+            {
+                // TODO implement a ReductionSettings System
+                //$reductionSettings = eventGroup->getReductionSettings();
+                //$newBooking->amountReductionBy($reducitonSettings->getPercentage());
+                // Or something like that ...
+                // For now let's give 10% discount
+                $newBooking->amountReductionBy(0.9);
+                $newBooking->invoiceAmountReductionBy(0.9);   
+            }
         }
-        
+
         $this->bookingRepository->add($newBooking);
-        //var_dump();
 
         $multipleArray = Array(
-            'booking' => $newBooking
-            //'error' => $error
+            'booking' => $newBooking,
+            'eve' => NULL
             );
         
         $this->view->assignMultiple($multipleArray);
