@@ -8,6 +8,7 @@ CREATE TABLE tx_danceclub_domain_model_event (
 
 	name varchar(255) DEFAULT '' NOT NULL,
 	description text NOT NULL,
+	canceled tinyint(1) unsigned DEFAULT '0' NOT NULL,
 	bookable tinyint(1) unsigned DEFAULT '0' NOT NULL,
 	price double(11,2) DEFAULT '0.00' NOT NULL,
 	force_partner tinyint(1) unsigned DEFAULT '0' NOT NULL,

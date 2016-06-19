@@ -11,6 +11,10 @@
 				<source>Describe your event.</source>
 				<target>Beschreibung der Veranstaltung.</target>
 			</trans-unit>
+			<trans-unit id="canceled.description">
+				<source>Cancel this Event.</source>
+				<target>Wenn gewählt wird dieser Event als Abgesagt angezeigt.</target>
+			</trans-unit>
 			<trans-unit id="bookable.description">
 				<source>Activate booking for this event.</source>
 				<target>Buchung für diese Veranstaltung aktivieren/deaktivieren. (Gesammthaft lässt sich die Buchung auch im Kursprogramm aktivieren/deaktivieren)</target>

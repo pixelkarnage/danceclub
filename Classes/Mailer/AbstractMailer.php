@@ -1,5 +1,5 @@
 <?php
-namespace \PlanT\Danceclub\Mailer;
+namespace PlanT\Danceclub\Mailer;
 
 /**
  * This file is part of the TYPO3 CMS project.
@@ -63,7 +63,7 @@ abstract class AbstractMailer
         $basePath = GeneralUtility::getFileAbsFileName('EXT:Resources/Private/Mailer/Booking/Confirmation/');
         if (!substr($basePath, -1, 1) == '/') {
             $basePath .= '/';
-        }*/
+        }
         $view->setTemplatePathAndFilename($basePath . $template);
         $view->setFormat('html');
         $view->getRequest()->setControllerExtensionName('DanceClub');

@@ -48,6 +48,13 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $description = '';
     
     /**
+     * Is this event Canceled?
+     * 
+     * @var bool
+     */
+    protected $canceled = FALSE;
+
+    /**
      * Is this event Bookable?
      * 
      * @var bool
@@ -183,6 +190,37 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+    
+    /**
+     * Returns the canceled
+     * 
+     * @return boolean $canceled
+     */
+    public function getCanceled()
+    {
+        return $this->canceled;
+    }
+    
+    /**
+     * Sets the canceled
+     * 
+     * @param boolean $canceled
+     * @return void
+     */
+    public function setCanceled($canceled)
+    {
+        $this->canceled = $canceled;
+    }
+    
+    /**
+     * Returns the boolean state of canceled
+     * 
+     * @return boolean
+     */
+    public function isCanceled()
+    {
+        return $this->canceled;
     }
     
     /**

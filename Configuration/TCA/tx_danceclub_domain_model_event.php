@@ -15,14 +15,14 @@ return array(
 		'transOrigDiffSourceField' => 'l10n_diffsource',
 		'delete' => 'deleted',
 		'enablecolumns' => array(),
-		'searchFields' => 'name,description,bookable,price,force_partner,max_bookings,min_bookings,disco_jokey,teachers,types,venues,event_groups,',
+		'searchFields' => 'name,description,canceled,bookable,price,force_partner,max_bookings,min_bookings,disco_jokey,teachers,types,venues,event_groups,',
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('danceclub') . 'Resources/Public/Icons/tx_danceclub_domain_model_event.png'
 	),
 	'interface' => array(
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, name, description, bookable, price, force_partner, max_bookings, min_bookings, disco_jokey, teachers, types, venues, event_groups',
 	),
 	'types' => array(
-		'1' => array('showitem' => '--div--;LLL:EXT:danceclub/Resources/Private/Language/locallang_db.xlf:tx_danceclub_domain_model_event.tab.general, name, disco_jokey, price, description;;;richtext:rte_transform[mode=ts_links],
+		'1' => array('showitem' => '--div--;LLL:EXT:danceclub/Resources/Private/Language/locallang_db.xlf:tx_danceclub_domain_model_event.tab.general, name, canceled, disco_jokey, price, description;;;richtext:rte_transform[mode=ts_links],
 			--div--;LLL:EXT:danceclub/Resources/Private/Language/locallang_db.xlf:tx_danceclub_domain_model_event.tab.links, event_groups, types, teachers, venues, 
 			--div--;LLL:EXT:danceclub/Resources/Private/Language/locallang_db.xlf:tx_danceclub_domain_model_event.tab.partner, bookable, force_partner, max_bookings, min_bookings,'),
 	),
@@ -108,6 +108,14 @@ return array(
 					)
 				)
 			),
+		),
+		'canceled' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:danceclub/Resources/Private/Language/locallang_db.xlf:tx_danceclub_domain_model_event.canceled',
+			'config' => array(
+				'type' => 'check',
+				'default' => 0
+			)
 		),
 		'bookable' => array(
 			'exclude' => 0,

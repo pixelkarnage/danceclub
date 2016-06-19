@@ -18,6 +18,9 @@
 			<trans-unit id="tx_danceclub_domain_model_event.name">
 				<source>Name</source>
 			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.canceled">
+				<source>Canceled</source>
+			</trans-unit>
 			<trans-unit id="tx_danceclub_domain_model_event.description">
 				<source>description</source>
 			</trans-unit>

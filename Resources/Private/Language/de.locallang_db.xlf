@@ -23,6 +23,10 @@
 				<source>Name</source>
 				<target>Name</target>
 			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.canceled">
+				<source>Canceled</source>
+				<target>Abgesagt</target>
+			</trans-unit>
 			<trans-unit id="tx_danceclub_domain_model_event.description">
 				<source>Description</source>
 				<target>Beschreibung</target>

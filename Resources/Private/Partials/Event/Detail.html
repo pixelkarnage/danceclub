@@ -7,6 +7,7 @@
 			<f:then>
 				<div class="kurs">
 					<a onclick="showDetails('K{event.uid}');" title="Kursbeschreibung und Info anzeigen" class="detailinfo">Details<br />An/Ab</a>
+					<f:if condition="{event.canceled}"><span class="canceledstamp">Abgeblasen!</span></f:if>
 					<h3>{event.name}</h3>
 					<div id="K{event.uid}" style="display:normal;">
 						<f:if condition="{event.teachers -> f:count()}>=1">
@@ -18,13 +19,15 @@
 						{event.description -> f:format.html()}
 						<ul class="right"> 
 							<li class="wann title">Wann?</li>
-							<f:for each="{eventDates}" as="dates">
-							<f:for each="{dates}" as="date">
-								<f:if condition="{date.foreignUid}=={event.uid}">
-								<li><f:format.date format="d.m.Y">{date.startDate}</f:format.date>, <f:format.date format="H<\s\up>i</\s\up>">{date.startTime}</f:format.date>-<f:format.date format="H<\s\up>i</\s\up>">{date.endTime}</f:format.date></li>
-								</f:if>
-							</f:for>
-						</f:for></li> 
+								<f:for each="{eventDates}" as="dates">
+									<f:for each="{dates}" as="date">
+										<f:if condition="{date.foreignUid}=={event.uid}">
+										<li><f:format.date format="d.m.Y">{date.startDate}</f:format.date>, <f:format.date format="H<\s\up>i</\s\up>">{date.startTime}</f:format.date>-<f:format.date format="H<\s\up>i</\s\up>">{date.endTime}</f:format.date></li>
+										</f:if>
+									</f:for>
+								</f:for>
+							</li> 
+				
 							<f:if condition="{event.venues -> f:count()}>=1">
 								<f:then>
 									<li class="title">Wo?</li>

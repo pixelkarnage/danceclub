@@ -76,7 +76,7 @@ class DanceClubController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     protected $bookingRepository = NULL;
 
     /**
-     * @var \PlanT\Danceclub\Mailer\bookingMailer
+     * @var \PlanT\Danceclub\Mailer\BookingMailer
      * @inject
      */
     protected $bookingMailer = NULL;

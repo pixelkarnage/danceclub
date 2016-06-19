@@ -9,6 +9,9 @@
 			<trans-unit id="description.description">
 				<source>Describe your event.</source>
 			</trans-unit>
+			<trans-unit id="canceled.description">
+				<source>Cancel this Event.</source>
+			</trans-unit>
 			<trans-unit id="bookable.description">
 				<source>Is this event Bookable?</source>
 			</trans-unit>

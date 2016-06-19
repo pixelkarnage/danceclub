@@ -1,5 +1,5 @@
 <?php
-namespace \PlanT\Danceclub\Mailer;
+namespace PlanT\Danceclub\Mailer;
 
 /**
  * This file is part of the TYPO3 CMS project.
@@ -25,7 +25,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * Responsible for mails regarding bookings.
  */
-class BookingMailer extends AbstractMailer
+class BookingMailer extends \PlanT\Danceclub\Mailer\AbstractMailer
 {
 
     /**
@@ -55,7 +55,7 @@ class BookingMailer extends AbstractMailer
         $mail->setTo([$booking->getEmail() => $booking->getName()]);
         $mail->setSubject('Kursbuchung im '.$eventGroup->getTitle());
         $mail->setBody($body, 'text/html');
-        $mail->send()
+        $mail->send();
         /*if () {
             $registration->setConfirmationSentAt(time());
             $this->registrationRepository->update($registration);

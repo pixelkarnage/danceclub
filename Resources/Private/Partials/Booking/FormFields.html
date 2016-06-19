@@ -22,10 +22,12 @@
 	<f:if condition="{events -> f:count()}>=1">
 		<f:then>
 			<f:for each="{events}" as="event">
+				<f:if condition="{event.canceled}!=1">
 				<f:if condition="{event.bookable}">
 					<f:then>
 						<f:form.checkbox value="{event.uid}" property="events" id="event{event.uid}" multiple="true" /><label for="event{event.uid}">{event.name}</label><br />
 					</f:then>
+				</f:if>
 				</f:if>
 			</f:for>
 		</f:then>
