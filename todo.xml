@@ -1,27 +1,12 @@
 #ToDo
 #=====================
+Version 0.3 The Backend:
++ Backend: Admin Panel
++ Backend: when making a registration only show the classes from the selected Kursprogramm! userProc something something
++ Backend: Own Tab for Calendarize
 
-- Die nächsten Events schön anzeigen
-- Test Extension  
-- Booking
-- Language of Model in Backend
-- Make it true English/German
-- Dokumentation
++ Implement Min Booking/ Max Bookings
++ Implement Force Partner Feature
++ Implement Field for booking: email confirmation sent at
 
-- Make it all Appear nicely in the FrontEnd
-	- News
 
-	- RSS
-	- Newsletter to Gmail import thingy
-	- Kontakt formular
-	- Liste von Lokalitäten
-	- Gut zu wissen?
-	- 
-
-!! -- GOAL: Get to the 'how it was before' point!
-Then:
-Implement Features:
-	- Backend: Admin Panel
-	- is it possible to calenderize inside danceclub?
-	- Backend: when making a registration only show the classes from the selected Kursprogramm! userProc something something
-	- Implement Min Booking/ Max Bookings
