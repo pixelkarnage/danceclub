@@ -74,6 +74,12 @@ class DanceClubController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
      * @inject
      */
     protected $bookingRepository = NULL;
+
+    /**
+     * @var \PlanT\Danceclub\Mailer\bookingMailer
+     * @inject
+     */
+    protected $bookingMailer = NULL;
     
     /**
      * Initializes the current action
@@ -159,10 +165,12 @@ class DanceClubController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
         }
 
         $this->bookingRepository->add($newBooking);
+        $this->bookingMailer->deliverBookingConfirmation($newBooking, $eventGroup);
 
         $multipleArray = Array(
             'booking' => $newBooking,
-            'eve' => NULL
+            'danceStyleOptions' => $this->getDanceStyleOptions(),
+            'eventGroup' => $eventGroup
             );
         
         $this->view->assignMultiple($multipleArray);
