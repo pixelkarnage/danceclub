@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2016-03-14T09:30:34Z" product-name="danceclub">
+		<header/>
+		<body>
+			<trans-unit id="name.description">
+				<source>Name your event.</source>
+				<target>Titel oder Name der Veranstaltung</target>
+			</trans-unit>
+			<trans-unit id="description.description">
+				<source>Describe your event.</source>
+				<target>Beschreibung der Veranstaltung.</target>
+			</trans-unit>
+			<trans-unit id="bookable.description">
+				<source>Activate booking for this event.</source>
+				<target>Buchung für diese Veranstaltung aktivieren/deaktivieren. (Gesammthaft lässt sich die Buchung auch im Kursprogramm aktivieren/deaktivieren)</target>
+			</trans-unit>
+			<trans-unit id="price.description">
+				<source>Set a participation fee.</source>
+				<target>Preis dieser Veranstaltung.</target>
+			</trans-unit>
+			<trans-unit id="force_partner.description">
+				<source>Only accept booking with a dance partner.</source>
+				<target>Partner Anmeldung forcieren.</target>
+			</trans-unit>
+			<trans-unit id="max_bookings.description">
+				<source>Maximum participants</source>
+				<target>Maximale Buchungen für diese Veranstaltung</target>
+			</trans-unit>
+			<trans-unit id="min_bookings.description">
+				<source>Minimum participants</source>
+				<target>Minimale Buchungen für diese Veranstaltung</target>
+			</trans-unit>
+			<trans-unit id="disco_jokey.description">
+				<source>The DJ for this Event.</source>
+				<target>Der DJ für diese Veranstaltung.</target>
+			</trans-unit>
+			<trans-unit id="teachers.description">
+				<source>Personel teaching at this event</source>
+				<target>Lehrer dieser Veranstaltung.</target>
+			</trans-unit>
+			<trans-unit id="type.description">
+				<source>Type of event. (Practica, Milonga etc)</source>
+				<target>Veranstaltungstyp. (Practica, Milonga etc.)</target>
+			</trans-unit>
+			<trans-unit id="location.description">
+				<source>The place it shall happen</source>
+				<target>Veranstaltugnsort.</target>
+			</trans-unit>
+			<trans-unit id="start_time.description">
+				<source>startTime</source>
+				<target>Start Uhrzeit</target>
+			</trans-unit>
+			<trans-unit id="end_time.description">
+				<source>endTime</source>
+				<target>Ende Uhrzeit</target>
+			</trans-unit>
+			<trans-unit id="reoccurence_until.description">
+				<source>reoccurenceUntil</source>
+				<target>Wiederholung</target>
+			</trans-unit>
+			<trans-unit id="reoccurance_type.description">
+				<source>Daily, Weekly, Monthly etc.</source>
+				<target>Täglich, Wöchentlich, Monatlich etc.</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

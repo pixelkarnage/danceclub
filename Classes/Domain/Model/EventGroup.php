@@ -75,7 +75,7 @@ class EventGroup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $confirmBookingMessage = '';
-    
+
     /**
      * __construct
      */
@@ -84,7 +84,7 @@ class EventGroup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         //Do not remove the next line: It would break the functionality
         $this->initStorageObjects();
     }
-    
+
     /**
      * Returns the title
      * 

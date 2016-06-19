@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2016-03-14T09:30:34Z" product-name="danceclub">
+		<header/>
+		<body>
+			<trans-unit id="name.description">
+				<source>The name of the Person booking</source>
+				<target>Der Name der buchenden Person</target>
+			</trans-unit>
+			<trans-unit id="email.description">
+				<source>Contact email</source>
+				<target>Kontakt E-Mail Adresse</target>
+			</trans-unit>
+			<trans-unit id="dance_style.description">
+				<source>Follower/Leader/Both</source>
+				<target>Folgen/Führen/Beides</target>
+			</trans-unit>
+			<trans-unit id="student.description">
+				<source>Student</source>
+				<target>Student</target>
+			</trans-unit>
+			<trans-unit id="comment.description">
+				<source>User comment on his order/booking</source>
+				<target>Kommentar zu dieser Buchung.</target>
+			</trans-unit>
+			<trans-unit id="amount.description">
+				<source>amount</source>
+				<target>Preis dieser Buchung.</target>
+			</trans-unit>
+			<trans-unit id="invoice_amount.description">
+				<source>How much is owed still</source>
+				<target>Noch zu bezahler Betrag.</target>
+			</trans-unit>
+			<trans-unit id="canceled.description">
+				<source>This booking is canceled.</source>
+				<target>Diese Buchung wurde Abgesagt!</target>
+			</trans-unit>
+			<trans-unit id="events.description">
+				<source>events</source>
+				<target>Veranstaltungs Beschreibung</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2016-03-14T09:30:34Z" product-name="danceclub">
+		<header/>
+		<body>
+			<trans-unit id="tx_danceclub_domain_model_event">
+				<source>Event</source>
+				<target>Veranstaltung</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.tab.general">
+				<source>General</source>
+				<target>Generell</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.tab.partner">
+				<source>Booking</source>
+				<target>Buchung</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.tab.links">
+				<source>Links</source>
+				<target>Verknüpfungen</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.name">
+				<source>Name</source>
+				<target>Name</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.description">
+				<source>Description</source>
+				<target>Beschreibung</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.bookable">
+				<source>Bookable</source>
+				<target>Buchbar</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.price">
+				<source>Price</source>
+				<target>Preis</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.force_partner">
+				<source>Force Partner</source>
+				<target>Nur mit Partner Buchbar</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.max_bookings">
+				<source>Maximum Bookings</source>
+				<target>Maximale Buchungen</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.min_bookings">
+				<source>Minimum Bookings</source>
+				<target>Minimale Buchungen</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.disco_jokey">
+				<source>DJ</source>
+				<target>DJ</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.teachers">
+				<source>Teachers</source>
+				<target>Lehrer</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.types">
+				<source>Type</source>
+				<target>Typ</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.venues">
+				<source>Location</source>
+				<target>Ortsangabe</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup">
+				<source>Event Group</source>
+				<target>Kursprogramm</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.tab.general">
+				<source>General Info</source>
+				<target>Generelle Informationen</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.tab.booking">
+				<source>Course Booking</source>
+				<target>Kursbuchung</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.title">
+				<source>Title</source>
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.subtitle">
+				<source>Subtitle</source>
+				<target>Untertitel</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.activate_booking">
+				<source>Activate Booking</source>
+				<target>Kursbuchung aktivieren</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.description">
+				<source>Description</source>
+				<target>Beschreibung</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.closed_booking_message">
+				<source>Closed Booking Message</source>
+				<target>Meldung bei deaktivierter Kursbuchung</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.confirm_booking_message">
+				<source>Confirm Booking Message</source>
+				<target>Zusatz Meldung bei erfolgreicher Kursbuchung</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.events">
+				<source>Events</source>
+				<target>Veranstaltungen</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking">
+				<source>Booking</source>
+				<target>Buchung</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.tab.personal">
+				<source>Personal Info</source>
+				<target>Persöhnliche Inforamtionen</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.tab.finance">
+				<source>Payment</source>
+				<target>Bezahlung</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.tab.events">
+				<source>Booked Events</source>
+				<target>Gebuchte Veranstaltungen</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.name">
+				<source>Name</source>
+				<target>Name</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.email">
+				<source>Email</source>
+				<target>E-Mail</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.dance_style">
+				<source>Dance Style</source>
+				<target>Tanzstil</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.dance_style.0">
+				<source>Both</source>
+				<target>Beides</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.dance_style.1">
+				<source>Lead</source>
+				<target>Führen</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.dance_style.2">
+				<source>Follow</source>
+				<target>Folgen</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.student">
+				<source>Student</source>
+				<target>Student</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.true">
+				<source>Yes</source>
+				<target>Ja</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.false">
+				<source>No</source>
+				<target>Nein</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.comment">
+				<source>Comment</source>
+				<target>Kommentar</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.amount">
+				<source>Amount</source>
+				<target>Original Betrag</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.invoice_amount">
+				<source>Invoice Amount</source>
+				<target>Ausstehender Betrag</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.canceled">
+				<source>Canceled</source>
+				<target>Abgesagt</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_booking.events">
+				<source>Events</source>
+				<target>Veranstaltungen</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_venue">
+				<source>Venue</source>
+				<target>Veranstaltungsorte</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_venue.name">
+				<source>Name</source>
+				<target>Name</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_venue.address">
+				<source>Address</source>
+				<target>Adresse</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_venue.www">
+				<source>WWW</source>
+				<target>WWW</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_type">
+				<source>Event Type</source>
+				<target>Veranstaltungstyp</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_type.event_type">
+				<source>Type</source>
+				<target>Typ</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.image">
+				<source>Image</source>
+				<target>Bild</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.file">
+				<source>File</source>
+				<target>Datei</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.description">
+				<source>Description</source>
+				<target>Beschreibung</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.start_time">
+				<source>Start Time</source>
+				<target>Uhrzeit Start</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.end_time">
+				<source>End Time</source>
+				<target>Uhrzeit Ende</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.reoccurence_until">
+				<source>Reoccurence Until</source>
+				<target>Wiederholen bis</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.reoccurance_type">
+				<source>Reoccurance Type</source>
+				<target>Wiederholungstyp</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.once">
+				<source>once</source>
+				<target>Einmalig</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.daily">
+				<source>Daily</source>
+				<target>Täglich</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.weekly">
+				<source>Weekly</source>
+				<target>Wöchentlich</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.monthly">
+				<source>Monthly</source>
+				<target>Monatlich</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.yearly">
+				<source>Yearly</source>
+				<target>Jährlich</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

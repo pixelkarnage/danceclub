@@ -1,0 +1,13 @@
+<h1>Hallo {booking.name}</h1>
+<p><strong style="color: green;">Deine Buchung war erfolgreich.</strong></p>
+<p>Du hast dich im {eventGroup.title} angemeldet für: <f:for each="{booking.events}" as="event" iteration="iterator">"<strong>{event.name}</strong>" <f:if condition="{iterator.isLast}"><f:then></f:then><f:else> &amp; </f:else></f:if></f:for></p>
+<p>Dein gewählter Tanzstil: <strong><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_db.xlf:tx_danceclub_domain_model_booking.dance_style.{booking.danceStyle}" /></strong></p>
+<p>Preis: <strong>{booking.invoiceAmount}.- Chf</strong> (Bitte in Bar mitbringen. <f:if condition="{booking.student}=1">In diesem Preis ist der Studenten-Rabatt einberechnet.</f:if>)</p>
+<f:if condition="{eventGroup.confirmBookingMessage}"><p>{eventGroup.confirmBookingMessage}</p></f:if>
+<p></p>
+<p>Die Kurse sind leider nicht immer ausgeglichen. Meistens hat es zuwenig Führende; sich mit einem Tanzpartner anzumelden ist deswegen vorteilhaft.</p>
+<p>Diese Kursanmeldung gilt ausschliesslich für <strong>DICH</strong>, Paare müssen sich je separat Anmelden.</p>
+<p>Die Anmeldung ist verbindlich, eine Bestätigung zum Eingang deiner Anmeldung bekommst du per eMail.</p>
+<p>plan-T ist non-Profit orientiert. Bei zu wenig Anmeldung kann ein Kurs per eMail abgesagt werden.</p>
+<p>Bei Fragen oder Anregungen sind wir immer unter info@plan-t.ch erreichbar.</p>
+<p>Vielen Dank für dein Interesse,<br /><i>dein plan-T Team</i></p>
