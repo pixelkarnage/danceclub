@@ -39,6 +39,21 @@ abstract class AbstractMailer
      */
     protected $objectManager;
 
+    /**
+     * @var array
+     */
+    protected $settings = array();
+
+    /**
+     * Initializes the current action
+     *
+     * @return void
+     */
+    public function initialize() {
+        $configurationManager = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManager');
+        $this->settings = $configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,'danceclub', '');
+        $this->settings = $this->settings['booking'];
+    }
 
     /**
      * @param string $locale ISO 2 char locale code.
@@ -58,17 +73,17 @@ abstract class AbstractMailer
      */
     protected function renderEmailTemplate($template, $locals = [])
     {
-        //$config = ConfigurationUtility::getModuleTyposcriptConfiguration();
-        $view = $this->objectManager->get(StandaloneView::class);
-        $basePath = GeneralUtility::getFileAbsFileName('EXT:Resources/Private/Mailer/Booking/Confirmation/');
+        $mailView = $this->objectManager->get(StandaloneView::class);
+        $basePath = GeneralUtility::getFileAbsFileName($this->settings['confirmationEmail']['templateRootPath']);
         if (!substr($basePath, -1, 1) == '/') {
             $basePath .= '/';
         }
-        $view->setTemplatePathAndFilename($basePath . $template);
-        $view->setFormat('html');
-        $view->getRequest()->setControllerExtensionName('DanceClub');
-        $view->assignMultiple($locals);
-        return trim($view->render());
+        //print_r($basePath);
+        $mailView->setTemplatePathAndFilename($basePath . $template);
+        $mailView->setFormat('html');
+        $mailView->getRequest()->setControllerExtensionName('DanceClub');
+        $mailView->assignMultiple($locals);
+        return trim($mailView->render());
     }
 
     /**
@@ -92,5 +107,4 @@ abstract class AbstractMailer
         // LocalizationUtility respects $GLOBALS['BE_USER']->uc['lang'] if not in FE context.
         return LocalizationUtility::translate($key, 'danceclub');
     }
-
 }

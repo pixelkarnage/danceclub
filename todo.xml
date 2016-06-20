@@ -2,7 +2,8 @@
 #=====================
 Version 0.3 The Backend:
 + Backend: Admin Panel
-+ Backend: when making a registration only show the classes from the selected Kursprogramm! userProc something something
+  - First get a hello world
++ Backend: when making a registration only show the classes from the selected Kursprogramm! userProc EventGroup Tree
 + Backend: Own Tab for Calendarize
 
 + Implement Min Booking/ Max Bookings
@@ -10,3 +11,21 @@ Version 0.3 The Backend:
 + Implement Field for booking: email confirmation sent at
 
 
+
+Version 0.4 The Frontend:
++ Implement Studenten Rabatt
++ Implement clear eMail/template structure, so that a different email for Marathons works.
+
+
+
+
+
+
+
+===========================
+ It should have:
+    Bookings Tab:
+    - Overview per EventGroup or only Event. (two select fields that change accordingly?)
+    - Overview per bookable Event: Percentage of follow/lead bookings
+    - Send booking Confirmation mail button
+    - 

@@ -65,4 +65,33 @@ plugin.tx_danceclub {
 			200 = EXT:danceclub/Resources/Private/Partials/
 		}
 	}
+
+	settings {
+		
+		booking {
+			
+			mailFromName = 
+			mailFromAddress = 
+			
+			confirmationEmail {
+				attendee = 1
+				attendee.subject = 
+				
+				organizer = 0
+				organizer.subject = 
+
+				templateRootPath = EXT:danceclub/Resources/Private/Mailer/Booking/Confirmation/
+			}
+			
+			validation {
+				// As various functions rely on a valid email address (e.g. delivering a 
+				// confirmation email), the email address must be present and valid.
+				// You should know what you do if you drop this.
+				email {
+					10.validator = NotEmpty
+					20.validator = EmailAddress
+				}
+			}
+		}
+	}
 }
