@@ -11,6 +11,10 @@ if (!defined('TYPO3_MODE')) {
 
 if (TYPO3_MODE === 'BE') {
 
+	// Add tables to livesearch (e.g. "#event:fo" or "#booking:fo")
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['livesearch']['event'] = 'tx_danceclub_domain_model_event';
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['livesearch']['booking'] = 'tx_danceclub_domain_model_booking';
+
 	/**
 	 * Registers a Backend Module
 	 */
@@ -20,9 +24,7 @@ if (TYPO3_MODE === 'BE') {
 		'danceclubadmin',	// Submodule key
 		'',						// Position
 		array(
-			'Booking' => 'list, edit, new, update',
-			'DanceClub' => 'list, edit, new, update',
-			
+			'Administration' => 'index,newEventGroup,newEvent,newBooking,newType,newVenue',	
 		),
 		array(
 			'access' => 'user,group',

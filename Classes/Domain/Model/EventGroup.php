@@ -77,12 +77,41 @@ class EventGroup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $confirmBookingMessage = '';
 
     /**
+     * events
+     * 
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\PlanT\Danceclub\Domain\Model\Event>
+     * @transient
+     */
+    protected $events = NULL;
+
+    /**
+     * description
+     * 
+     * @var int
+     * @transient
+     */
+    protected $bookingCount = 0;
+
+    /**
      * __construct
      */
     public function __construct()
     {
         //Do not remove the next line: It would break the functionality
         $this->initStorageObjects();
+    }
+
+    /**
+     * Initializes all ObjectStorage properties
+     * Do not modify this method!
+     * It will be rewritten on each save in the extension builder
+     * You may modify the constructor of this class instead
+     * 
+     * @return void
+     */
+    protected function initStorageObjects()
+    {
+        $this->events = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -221,5 +250,80 @@ class EventGroup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->confirmBookingMessage = $confirmBookingMessage;
     }
     
+    /**
+     * Adds a Event
+     * 
+     * @param \PlanT\Danceclub\Domain\Model\Event $event
+     * @return void
+     */
+    public function addEvent(\PlanT\Danceclub\Domain\Model\Event $event)
+    {
+        $this->events->attach($event);
+    }
+    
+    /**
+     * Removes a Event
+     * 
+     * @param \PlanT\Danceclub\Domain\Model\Event $eventToRemove The Event to be removed
+     * @return void
+     */
+    public function removeEvent(\PlanT\Danceclub\Domain\Model\Event $eventToRemove)
+    {
+        $this->events->detach($eventToRemove);
+    }
+
+
+    /**
+     * Removes a Event
+     * 
+     * @param $eventsToAdd The Event to be removed
+     * @return void
+     */
+    public function setQueryEvents($eventsToAdd)
+    {
+        $this->events = $eventsToAdd;
+    }
+    
+    /**
+     * Returns the events
+     * 
+     * @return \PlanT\Danceclub\Domain\Model\Event $events
+     */
+    public function getEvents()
+    {
+        return $this->events;
+    }
+    
+    /**
+     * Sets the events
+     * 
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\PlanT\Danceclub\Domain\Model\Event> $events
+     * @return void
+     */
+    public function setEvents(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $events)
+    {
+        $this->events = $events;
+    }
+
+    /**
+     * Returns the title
+     * 
+     * @return string $bookingCount
+     */
+    public function getBookingCount()
+    {
+        return $this->bookingCount;
+    }
+    
+    /**
+     * Sets the title
+     * 
+     * @param int $bookingCount
+     * @return void
+     */
+    public function setBookingCount($bookingCount)
+    {
+        $this->bookingCount = $bookingCount;
+    }
 
 }

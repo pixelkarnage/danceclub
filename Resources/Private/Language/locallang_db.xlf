@@ -51,8 +51,14 @@
 			<trans-unit id="tx_danceclub_domain_model_event.venues">
 				<source>Location</source>
 			</trans-unit>
-			<trans-unit id="tx_danceclub_domain_model_eventgroups">
+			<trans-unit id="tx_danceclub_domain_model_eventgroup">
 				<source>Event Group</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.eventcount">
+				<source>Amount of Events</source>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.bookingcount">
+				<source>Amount of Bookings</source>
 			</trans-unit>
 			<trans-unit id="tx_danceclub_domain_model_eventgroup.tab.general">
 				<source>General Info</source>

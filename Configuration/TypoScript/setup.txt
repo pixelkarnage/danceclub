@@ -80,7 +80,7 @@ plugin.tx_danceclub {
 				organizer = 0
 				organizer.subject = 
 
-				templateRootPath = EXT:danceclub/Resources/Private/Mailer/Booking/Confirmation/
+				templateRootPath = EXT:danceclub/Resources/Private/Mailer/Classes/
 			}
 			
 			validation {

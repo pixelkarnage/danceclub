@@ -39,4 +39,57 @@ class BookingRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING
     );
 
+    /**
+     * Find by Evengroups
+     *
+     * @param int $event \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\PlanT\Danceclub\Domain\Model\Event>
+     * @param bool $respectEnableFields if set to false, hidden records are shown
+     * @return int
+     */
+    public function findBookingCountByEvent($event, $respectEnableFields = true)
+    {
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
+        $query->getQuerySettings()->setRespectSysLanguage(false);
+
+        if($respectEnableFields == false) {
+        	$query->getQuerySettings()->setIgnoreEnableFields(true)->setIncludeDeleted(false);
+        }
+       
+        $constraints = array();
+        $constraints[] = $query->equals('canceled', false);
+        $constraints[] = $query->contains('events', $event);
+
+        $query->matching($query->logicalAnd($constraints));
+
+        return $query->count();
+    }
+
+    /**
+     * Find by Evengroups
+     *
+     * @param int $eventGroup \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\PlanT\Danceclub\Domain\Model\EventGroup>
+     * @param bool $respectEnableFields if set to false, hidden records are shown
+     * @return int
+     */
+    public function findBookingsCountByEventGroup($eventGroup, $respectEnableFields = true)
+    {
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
+        $query->getQuerySettings()->setRespectSysLanguage(false);
+
+        if($respectEnableFields == false) {
+        	$query->getQuerySettings()->setIgnoreEnableFields(true)->setIncludeDeleted(false);
+        }
+
+        $constraints = array();
+        $constraints[] = $query->equals('canceled', false);
+        $constraints[] = $query->contains('eventGroups', $event);
+
+        $query->matching($query->logicalAnd($constraints));
+
+        return $query->count();
+    }
+
+
 }

@@ -44,21 +44,25 @@ class EventRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      *
      * @param int $eventGroups id of record
      * @param var $types \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\PlanT\Danceclub\Domain\Model\Type>
+     * @param bool $respectBookable if set to false, all records are shown, if set to true only bookable events will be shown
      * @param bool $respectEnableFields if set to false, hidden records are shown
      * @return \PlanT\Danceclub\Domain\Model\Event
      */
-    public function findBookableByEventGroups($eventGroups, $types, $respectEnableFields = true)
+    public function findByEventGroups($eventGroups, $types = NULL, $respectBookable = false, $respectEnableFields = true)
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
         $query->getQuerySettings()->setRespectSysLanguage(false);
 
         $constraints = array();
-        $constraints[] = $query->equals('bookable', true);
         $constraints[] = $query->contains('eventGroups', $eventGroups);
 
+        if ($respectBookable == true) {
+           $constraints[] = $query->equals('bookable', true); 
+        }
+        
         // if in() is empty the query will fail  
-        if ($types !== NULL) {
+        if ($types != NULL) {
             $constrains[] = $query->in('types', explode(',', $types));
         }
 

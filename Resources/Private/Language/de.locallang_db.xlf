@@ -71,6 +71,14 @@
 				<source>Event Group</source>
 				<target>Kursprogramm</target>
 			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.eventcount">
+				<source>Amount of Events</source>
+				<target>Anzahl Events</target>
+			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_eventgroup.bookingcount">
+				<source>Amount of Bookings</source>
+				<target>Anzahl Buchungen</target>
+			</trans-unit>
 			<trans-unit id="tx_danceclub_domain_model_eventgroup.tab.general">
 				<source>General Info</source>
 				<target>Generelle Informationen</target>
@@ -88,8 +96,8 @@
 				<target>Untertitel</target>
 			</trans-unit>
 			<trans-unit id="tx_danceclub_domain_model_eventgroup.activate_booking">
-				<source>Activate Booking</source>
-				<target>Kursbuchung aktivieren</target>
+				<source>Active booking</source>
+				<target>Kursbuchen aktiv</target>
 			</trans-unit>
 			<trans-unit id="tx_danceclub_domain_model_eventgroup.description">
 				<source>Description</source>

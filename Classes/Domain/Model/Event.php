@@ -123,6 +123,14 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\PlanT\Danceclub\Domain\Model\EventGroup>
      */
     protected $eventGroups = NULL;
+
+    /**
+     * maximum participants
+     * 
+     * @var int
+     * @transient
+     */
+    protected $bookingsCount = 0;
     
 
     /**
@@ -539,5 +547,26 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setEventGroup(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $eventGroups)
     {
         $this->eventGroups = $eventGroups;
+    }
+
+    /**
+     * Returns the title
+     * 
+     * @return string $bookingCount
+     */
+    public function getBookingCount()
+    {
+        return $this->bookingCount;
+    }
+    
+    /**
+     * Sets the title
+     * 
+     * @param int $bookingCount
+     * @return void
+     */
+    public function setBookingCount($bookingCount)
+    {
+        $this->bookingCount = $bookingCount;
     }
 }

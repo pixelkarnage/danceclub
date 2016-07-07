@@ -1,21 +1,36 @@
 #ToDo
 #=====================
-Version 0.3 The Backend:
+Version 0.3 The Backend & Feature Parity:
 + Backend: Admin Panel
-  - First get a hello world
-+ Backend: when making a registration only show the classes from the selected Kursprogramm! userProc EventGroup Tree
-+ Backend: Own Tab for Calendarize
 
-+ Implement Min Booking/ Max Bookings
-+ Implement Force Partner Feature
+  - Workflows:
+    1 As lia create a Kursprogramm
+      -> EvenGroup List view -> New Button
+
+    2 As lio Check on registration status to send mails/cancel/ or stuff
+      -> List of EventGroup With events Summary type
+          
+
+      -> Detail view of event with bookings etc.
+        - Lio needs to create and update bookings (cancel, payment)
+          - Lio needs to be able to send mails to acknowkledge payment, cancel registration confirm message, etc.
+          >>>>>get a detail from link of list with all data
+
++ Backend: Own Tab for Calendarize
+>>>>> possible by adding TCA throu calendarize_danceclub?
+
 + Implement Field for booking: email confirmation sent at
 
 
-
 Version 0.4 The Frontend:
-+ Implement Studenten Rabatt
-+ Implement clear eMail/template structure, so that a different email for Marathons works.
++ Implement Studenten Rabatt???
 
+Version 0.5
++ Backend: when making a registration only show the classes from the selected Kursprogramm! userProc EventGroup Tree
+  - how to do this? foreach findByEventGroupUid
++ Implement Min Booking/ Max Bookings
++ Implement Force Partner Feature
++ Implement 
 
 
 
@@ -23,6 +38,7 @@ Version 0.4 The Frontend:
 
 
 ===========================
+Backend Brainstorm
  It should have:
     Bookings Tab:
     - Overview per EventGroup or only Event. (two select fields that change accordingly?)

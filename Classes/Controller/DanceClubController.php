@@ -99,9 +99,9 @@ class DanceClubController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     public function showAction(\PlanT\Danceclub\Domain\Model\Booking $newBooking = NULL) {
         // Get the eventGroup and all events of that eventGroup
         $eventGroup = $this->eventGroupRepository->findAllByUid($this->settings['eventgroup']);
-        $events = $this->eventRepository->findBookableByEventGroups($this->settings['eventgroup'], $this->settings['eventtypes'], true);
+        $events = $this->eventRepository->findByEventGroups($this->settings['eventgroup'], $this->settings['eventtypes'], true, true);
 
-        // Pass all Data to Fluid 
+        // Pass all Data to Fluid
         $multipleArray = Array(
             'eventGroup' => $eventGroup->getFirst(), 
             'events' => $events, 
@@ -122,7 +122,7 @@ class DanceClubController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     public function showLatestAction(\PlanT\Danceclub\Domain\Model\Booking $newBooking = NULL) {
         // Get the most recent EventGroup and its Events
         $eventGroup = $this->eventGroupRepository->findLatest();
-        $events = $this->eventRepository->findBookableByEventGroups($eventGroup->getFirst()->getUid(), $this->settings['eventtypes'], true);
+        $events = $this->eventRepository->findByEventGroups($eventGroup->getFirst()->getUid(), $this->settings['eventtypes'], true, true);
 
         // Pass all Data to Fluid 
         $multipleArray = Array(

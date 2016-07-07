@@ -39,6 +39,7 @@ class EventGroupRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING
     );
 
+
     /**
      * Get all eventGroups, including Hidden/time constrainted ones
      *
@@ -73,5 +74,23 @@ class EventGroupRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 			)
 		);
         return $query->execute();
+    }
+
+    /**
+     * Get the most recent eventGroup
+     *
+     * @return \PlanT\Danceclub\Domain\Model\EventGroup
+     */
+    public function findAllAsArray()
+    {
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(true);
+        $query->getQuerySettings()->setRespectSysLanguage(false);
+        $query->setOrderings(
+            array(
+                'uid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING
+            )
+        );
+        return $query->execute()->toArray();
     }
 }

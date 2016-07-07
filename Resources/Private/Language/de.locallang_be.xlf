@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" target-language="de" original="messages" date="2016-03-14T09:30:34Z" product-name="danceclub">
+		<header/>
+		<body>
+			<trans-unit id="administration.pageTitle">
+				<source>Dance Club Administration</source>
+				<target>Plan-T Kursadministration</target>
+			</trans-unit>
+			<trans-unit id="administration.true">
+				<source>Yes</source>
+				<targe>Ja</targe>
+			</trans-unit>
+			<trans-unit id="administration.false">
+				<source>No</source>
+				<targe>Nein</targe>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

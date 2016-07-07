@@ -42,22 +42,22 @@ class BookingMailer extends \PlanT\Danceclub\Mailer\AbstractMailer
 
         // Mail for the Attendee
         if($this->settings['confirmationEmail']['attendee']){
-            $body = $this->renderEmailTemplate('Attendee.html', ['booking' => $booking,'eventGroup' => $eventGroup]);
+            $body = $this->renderEmailTemplate('NoteOnBookingOrganizerAttendee.html', ['booking' => $booking,'eventGroup' => $eventGroup]);
             $mail = $this->createMailMessage();
-            $mail->setFrom([$this->settings['mailFromAddress'] => $this->settings['mailFromName']);
+            $mail->setFrom([$this->settings['mailFromAddress'] => $this->settings['mailFromName']]);
             $mail->setTo([$booking->getEmail() => $booking->getName()]);
-            $mail->setSubject($this->settings['confirmationEmail']['attendee']['subject'].' ('$eventGroup->getTitle().')');
+            $mail->setSubject($this->settings['confirmationEmail']['attendee']['subject'].' ('.$eventGroup->getTitle().')');
             $mail->setBody($body, 'text/html');
             $mail->send(); 
         }
         
         // Mail for the Organizer
         if($this->settings['confirmationEmail']['organizer']){
-            $body = $this->renderEmailTemplate('Organizer.html', ['booking' => $booking,'eventGroup' => $eventGroup]);
+            $body = $this->renderEmailTemplate('NoteOnBookingOrganizer.html', ['booking' => $booking,'eventGroup' => $eventGroup]);
             $mail = $this->createMailMessage();
-            $mail->setFrom([$this->settings['mailFromAddress'] => $this->settings['mailFromName']);
-            $mail->setTo([$this->settings['mailFromAddress'] => $this->settings['mailFromName']);
-            $mail->setSubject($this->settings['confirmationEmail']['organizer']['subject'].' ('$eventGroup->getTitle().')');
+            $mail->setFrom([$this->settings['mailFromAddress'] => $this->settings['mailFromName']]);
+            $mail->setTo([$this->settings['mailFromAddress'] => $this->settings['mailFromName']]);
+            $mail->setSubject($this->settings['confirmationEmail']['organizer']['subject'].' ('.$eventGroup->getTitle().')');
             $mail->setBody($body, 'text/html');
             $mail->send(); 
         }
