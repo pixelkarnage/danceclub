@@ -29,79 +29,26 @@ namespace PlanT\Danceclub\Controller;
 use TYPO3\CMS\Core\FormProtection\FormProtectionFactory;
 use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\HttpUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
+use TYPO3\CMS\Backend\Utility\BackendUtility as BackendUtilityCore;
 use TYPO3\CMS\Backend\Clipboard\Clipboard;
 use TYPO3\CMS\Backend\Template\Components\ButtonBar;
-use TYPO3\CMS\Backend\Utility\BackendUtility as BackendUtilityCore;
 use TYPO3\CMS\Backend\View\BackendTemplateView;
 
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
-use TYPO3\CMS\Extbase\Error\Error;
-use TYPO3\CMS\Extbase\Error\Result;
 use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
 use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
 
 use TYPO3\CMS\Lang\LanguageService;
 
-use PlanT\Danceclub\Domain\Model\Event;
-use PlanT\Danceclub\Domain\Model\Booking;
-
-use HDNET\Calendarize\Domain\Model\Index;
-
 /**
- * DanceClubController
+ * AdministrationController
  */
-class AdministrationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class AdministrationController extends \PlanT\Danceclub\Controller\AbstractController
 {
-    /**
-     * Page uid
-     *
-     * @var int
-     */
-    protected $pageUid = 0;
-
-    /**
-     * eventGroupRepository
-     * 
-     * @var \PlanT\Danceclub\Domain\Repository\EventGroupRepository
-     * @inject
-     */
-    protected $eventGroupRepository = NULL;
-
-    /**
-     * eventGroupRepository
-     * 
-     * @var \PlanT\Danceclub\Domain\Repository\EventRepository
-     * @inject
-     */
-    protected $eventRepository = NULL;
-
-   
-    /**
-     * indexRepository from Calendarize
-     * 
-     * @var HDNET\Calendarize\Domain\Repository\IndexRepository
-     * @inject
-     */
-    protected $indexRepository = NULL;
-
-  /**
-     * bookingRepository
-     * 
-     * @var \PlanT\Danceclub\Domain\Repository\BookingRepository
-     * @inject
-     */
-    protected $bookingRepository = NULL;
-
-    /**
-     * @var \PlanT\Danceclub\Mailer\BookingMailer
-     * @inject
-     */
-    protected $bookingMailer = NULL;
-
     /**
      * BackendTemplateContainer
      *
@@ -120,18 +67,6 @@ class AdministrationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * @var BackendTemplateView
      */
     protected $defaultViewObjectName = BackendTemplateView::class;
-
-    /**
-     * Function will be called before every other action
-     *
-     * @return void
-     */
-    public function initializeAction()
-    {
-        $this->pageUid = (int)\TYPO3\CMS\Core\Utility\GeneralUtility::_GET('id');
-        $this->setTsConfig();
-        parent::initializeAction();
-    }
 
     /**
      * Set up the doc header properly here
@@ -289,6 +224,61 @@ class AdministrationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         $this->view->assignMultiple($assignedValues);
     }
 
+     /**
+     * Detail action for administration
+     *  
+     * @param \PlanT\Danceclub\Domain\Model\Event $event
+     * @param \PlanT\Danceclub\Domain\Model\EventGroup $eventGroup
+     * @return void
+     */
+    public function detailAction(\PlanT\Danceclub\Domain\Model\Event $event, \PlanT\Danceclub\Domain\Model\EventGroup $eventGroup)
+    {
+        //rawurlencode(BackendUtilityCore::getModuleUrl('web_danceclubadmin')));
+        $bookings = $this->bookingRepository->findBookingsOfEvent($event);
+
+       // \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump(ksort();
+
+        $assignedValues = [
+            'eventGroup' => $eventGroup,
+            'event' => $event,
+            'eventDates' => $this->getEventOccurences($event),
+            'bookings' => $this->splitBookingsByDanceStyle($bookings),
+            'danceStyleOptions' => $this->getDanceStyleOptions(),
+            'returnUrl' => rawurlencode(BackendUtilityCore::getModuleUrl('web_DanceclubDanceclubadmin'))
+        ];
+
+        $this->view->assignMultiple($assignedValues);
+    }
+
+    /**
+     * Splits all Bookings By DanceStyle
+     * 
+     * @param array $bookings
+     * @return array $splitBookings 
+     */
+    public function splitBookingsByDanceStyle($bookings)
+    {
+        if (!empty($bookings)) {
+            foreach ($bookings as $booking) {
+                switch ($booking->getDanceStyle()) {
+                    // Switch the column order with the case numbering
+                    case 0:
+                        $splitBookings['1'][] = $booking;
+                        break;
+                    case 1:
+                        $splitBookings['0'][] = $booking;
+                        break;
+                    case 2:
+                        $splitBookings['2'][] = $booking;
+                        break;
+                }
+            }
+            ksort($splitBookings);
+            return $splitBookings;
+        }
+        return '';
+    }
+
     /**
      * Returns all Dance Style Options of the Booking object
      * 
@@ -394,18 +384,7 @@ class AdministrationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         HttpUtility::redirect($url);
     }
 
-    /**
-     * Set the TsConfig configuration for the extension
-     *
-     * @return void
-     */
-    protected function setTsConfig()
-    {
-        $tsConfig = BackendUtilityCore::getPagesTSconfig($this->pageUid);
-        if (isset($tsConfig['tx_danceclub.']['module.']) && is_array($tsConfig['tx_danceclub.']['module.'])) {
-            $this->tsConfiguration = $tsConfig['tx_danceclub.']['module.'];
-        }
-    }
+    
 
     /**
      * Get a CSRF token

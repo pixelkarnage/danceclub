@@ -26,80 +26,30 @@ namespace PlanT\Danceclub\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Persistence\QueryInterface;
-use TYPO3\CMS\Extbase\Error\Error;
-use TYPO3\CMS\Extbase\Error\Result;
-
-use PlanT\Danceclub\Domain\Model\Event;
-use PlanT\Danceclub\Domain\Model\Booking;
-
-use HDNET\Calendarize\Domain\Model\Index;
-
 /**
  * DanceClubController
  */
-class DanceClubController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class DanceClubController extends \PlanT\Danceclub\Controller\AbstractController
 {
-
     /**
-     * eventGroupRepository
-     * 
-     * @var \PlanT\Danceclub\Domain\Repository\EventGroupRepository
-     * @inject
-     */
-    protected $eventGroupRepository = NULL;
-
-    /**
-     * eventGroupRepository
-     * 
-     * @var \PlanT\Danceclub\Domain\Repository\EventRepository
-     * @inject
-     */
-    protected $eventRepository = NULL;
-
-   
-    /**
-     * indexRepository from Calendarize
-     * 
-     * @var HDNET\Calendarize\Domain\Repository\IndexRepository
-     * @inject
-     */
-    protected $indexRepository = NULL;
-
-  /**
-     * bookingRepository
-     * 
-     * @var \PlanT\Danceclub\Domain\Repository\BookingRepository
-     * @inject
-     */
-    protected $bookingRepository = NULL;
-
-    /**
-     * @var \PlanT\Danceclub\Mailer\BookingMailer
-     * @inject
-     */
-    protected $bookingMailer = NULL;
-    
-    /**
-     * Initializes the current action
-     *
-     * @return void
-     */
-    public function initializeAction() {
-
-    }
-
-    /**
-     * This showAction shows the Information and Booking-Form for a by Flexform chosen eventGroup
+     * This showAction shows the Information and Booking-Form for a by Flexform chosen eventGroup or the latest EventGroup
      * 
      * @param \PlanT\Danceclub\Domain\Model\Booking $newBooking
+     * @param bool $showLatestFlag 
      * @return void
      */
-    public function showAction(\PlanT\Danceclub\Domain\Model\Booking $newBooking = NULL) {
-        // Get the eventGroup and all events of that eventGroup
-        $eventGroup = $this->eventGroupRepository->findAllByUid($this->settings['eventgroup']);
-        $events = $this->eventRepository->findByEventGroups($this->settings['eventgroup'], $this->settings['eventtypes'], true, true);
+    public function showAction(\PlanT\Danceclub\Domain\Model\Booking $newBooking = NULL, $showLatestFlag = false) 
+    {
+        if ($showLatestFlag == false) 
+        {
+            // Get the eventGroup and all events of that eventGroup
+            $eventGroup = $this->eventGroupRepository->findAllByUid($this->settings['eventgroup']);
+            $events = $this->eventRepository->findByEventGroups($this->settings['eventgroup'], $this->settings['eventtypes'], true, true);
+        } else {
+            // Get the most recent EventGroup and its Events
+            $eventGroup = $this->eventGroupRepository->findLatest();
+            $events = $this->eventRepository->findByEventGroups($eventGroup->getFirst()->getUid(), $this->settings['eventtypes'], true, true);
+        }        
 
         // Pass all Data to Fluid
         $multipleArray = Array(
@@ -119,21 +69,9 @@ class DanceClubController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
      * @param \PlanT\Danceclub\Domain\Model\Booking $newBooking
      * @return void
      */
-    public function showLatestAction(\PlanT\Danceclub\Domain\Model\Booking $newBooking = NULL) {
-        // Get the most recent EventGroup and its Events
-        $eventGroup = $this->eventGroupRepository->findLatest();
-        $events = $this->eventRepository->findByEventGroups($eventGroup->getFirst()->getUid(), $this->settings['eventtypes'], true, true);
-
-        // Pass all Data to Fluid 
-        $multipleArray = Array(
-            'eventGroup' => $eventGroup->getFirst(), 
-            'events' => $events, 
-            'danceStyleOptions' => $this->getDanceStyleOptions(), 
-            'eventDates' => $this->getEventOccurences($events),
-            'booking' => $newBooking
-            );
-        
-        $this->view->assignMultiple($multipleArray);
+    public function showLatestAction(\PlanT\Danceclub\Domain\Model\Booking $newBooking = NULL) 
+    {
+        $this->showAction($newBooking, true);
     }
 
     /**
@@ -174,49 +112,5 @@ class DanceClubController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             );
         
         $this->view->assignMultiple($multipleArray);
-        //$this->redirect('show', 'EventGroup', 'danceclub', null, $pageUid=null, '');
     }
-    
-    /**
-     * Get all Dates and Times for each event in a given Event object 
-     * 
-     * @param  $events
-     * @return array HDNET\Calendarize\Domain\Model\Index
-     */
-    public function getEventOccurences($events)
-    {
-        // Get all Occurence Data from Calendarize
-        foreach ($events as $event){
-            $allEventDates[] = $this->indexRepository->findByEvent($event);
-        }
-        return $allEventDates;
-    }
-
-    /**
-     * Returns all Dance Style Options of the Booking object
-     * 
-     * @return array 
-     */
-    public function getDanceStyleOptions()
-    {
-        return $GLOBALS['TCA']['tx_danceclub_domain_model_booking']['columns']['dance_style']['config']['items'];
-    }
-
-    /**
-     * action create
-     * 
-     * @param \PlanT\Danceclub\Domain\Model\Booking $newBooking
-     * @return void
-     *
-    public function depAction(\PlanT\Danceclub\Domain\Model\Booking $newBooking)
-    {
-        $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See <a href="http://wiki.typo3.org/T3Doc/Extension_Builder/Using_the_Extension_Builder#1._Model_the_domain" target="_blank">Wiki</a>', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
-
-        $this->request->getArguments();
-        $this->request->getArgument('variable');
-
-        $this->bookingRepository->add($newBooking);
-        $this->redirect('list');
-    }*/
-
 }

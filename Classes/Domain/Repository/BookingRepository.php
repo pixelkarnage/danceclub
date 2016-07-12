@@ -42,6 +42,31 @@ class BookingRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * Find by Evengroups
      *
+     * @param \PlanT\Danceclub\Domain\Model\Event $event
+     * @param bool $respectEnableFields if set to false, hidden records are shown
+     * @return \PlanT\Danceclub\Domain\Model\Booking
+     */
+    public function findBookingsOfEvent(\PlanT\Danceclub\Domain\Model\Event $event, $respectEnableFields = true)
+    {
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
+
+        if($respectEnableFields == false) {
+            $query->getQuerySettings()->setIgnoreEnableFields(true)->setIncludeDeleted(false);
+        }
+
+        $constraints = array();
+        $constraints[] = $query->equals('canceled', false);
+        $constraints[] = $query->contains('events', $event);
+
+        $query->matching($query->logicalAnd($constraints));
+
+        return $query->execute();
+    }
+
+    /**
+     * Find by Evengroups
+     *
      * @param int $event \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\PlanT\Danceclub\Domain\Model\Event>
      * @param bool $respectEnableFields if set to false, hidden records are shown
      * @return int

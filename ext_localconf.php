@@ -8,23 +8,37 @@ if (!defined('TYPO3_MODE')) {
 	'Danceclub',
 	array(
 		'DanceClub' => 'show,showLatest,createBooking',
-		'Administration' => 'index,newEventGroup,newEvent,newBooking,newType,newVenue',
+		'Administration' => 'index,detail,newEventGroup,newEvent,newBooking,newType,newVenue',
 		
 	),
 	// non-cacheable actions
 	array(
 		'DanceClub' => '',
-		'Administration' => '',
+		'Administration' => 'detail,newEventGroup,newEvent,newBooking,newType,newVenue',
 	)
 );
 
 $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
-$danceclubIcons = array("danceclub-calendar-o", "danceclub-envelope", "danceclub-envelope-o", "danceclub-check", "danceclub-check-square", "danceclub-check-square-o", "danceclub-archive", "danceclub-sign-in", "danceclub-map-o", "danceclub-tag");
+$danceclubIcons = array( 
+	array('identifier' => 'danceclub-calendar-o', 'name' => 'calendar-o'),
+	array('identifier' => 'danceclub-envelope', 'name' => 'envelope'), 
+	array('identifier' => 'danceclub-envelope-o', 'name' => 'envelope-o'),
+	array('identifier' => 'danceclub-check', 'name' => 'check'), 
+	array('identifier' => 'danceclub-check-square', 'name' => 'check-square'), 
+	array('identifier' => 'danceclub-check-square-o', 'name' => 'check-square-o'),
+	array('identifier' => 'danceclub-archive', 'name' => 'archive'),
+	array('identifier' => 'danceclub-sign-in', 'name' => 'sign-in'),
+	array('identifier' => 'danceclub-map-o', 'name' => 'map-o'),
+	array('identifier' => 'danceclub-tag', 'name' => 'tag'),
+	array('identifier' => 'danceclub-danceStyle-0', 'name' => 'transgender-alt'),
+	array('identifier' => 'danceclub-danceStyle-1', 'name' => 'mars'),
+	array('identifier' => 'danceclub-danceStyle-2', 'name' => 'venus'),
+);
 
 foreach ($danceclubIcons as $danceclubIcon) {
 	$iconRegistry->registerIcon(
-		$danceclubIcon,
+		$danceclubIcon['identifier'],
 		\TYPO3\CMS\Core\Imaging\IconProvider\FontawesomeIconProvider::class,
-		array('name' => substr($danceclubIcon, 10))
+		array('name' => $danceclubIcon['name'])
 		);
 }

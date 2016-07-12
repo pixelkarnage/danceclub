@@ -14,7 +14,7 @@
 							<f:then>
 								<h4> mit <f:for each="{event.teachers}" as="teacher" iteration="iterator">{teacher.name} <f:if condition="{iterator.isLast}"><f:then></f:then><f:else> &amp; </f:else></f:if></f:for></h4>
 							</f:then>
-							<f:else></f:else>
+							<f:else><i>Für diese veranstaltung sind keine Lehrer Angegeben</i></f:else>
 						</f:if>
 						{event.description -> f:format.html()}
 						<ul class="right"> 
@@ -22,12 +22,13 @@
 								<f:for each="{eventDates}" as="dates">
 									<f:for each="{dates}" as="date">
 										<f:if condition="{date.foreignUid}=={event.uid}">
+										<f:then>
 										<li><f:format.date format="d.m.Y">{date.startDate}</f:format.date>, <f:format.date format="H<\s\up>i</\s\up>">{date.startTime}</f:format.date>-<f:format.date format="H<\s\up>i</\s\up>">{date.endTime}</f:format.date></li>
+										</f:then>
+										<f:else><li><i>Veranstaltung ist vorbei.</i></li></f:else>
 										</f:if>
 									</f:for>
 								</f:for>
-							</li> 
-				
 							<f:if condition="{event.venues -> f:count()}>=1">
 								<f:then>
 									<li class="title">Wo?</li>

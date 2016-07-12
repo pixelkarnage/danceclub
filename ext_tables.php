@@ -24,7 +24,7 @@ if (TYPO3_MODE === 'BE') {
 		'danceclubadmin',	// Submodule key
 		'',						// Position
 		array(
-			'Administration' => 'index,newEventGroup,newEvent,newBooking,newType,newVenue',	
+			'Administration' => 'index,detail,newEventGroup,newEvent,newBooking,newType,newVenue',	
 		),
 		array(
 			'access' => 'user,group',

@@ -19,7 +19,8 @@ return array(
 
 		),
 		'searchFields' => 'name,email,dance_style,student,comment,amount,invoice_amount,canceled,events,',
-		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('danceclub') . 'Resources/Public/Icons/tx_danceclub_domain_model_booking.png'
+		//'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('danceclub') . 'Resources/Public/Icons/tx_danceclub_domain_model_booking.png'
+		'iconfile' => 'danceclub--sign-in'
 	),
 	'interface' => array(
 		'showRecordFieldList' => 'name, email, dance_style, student, comment, amount, invoice_amount, canceled, events',

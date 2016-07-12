@@ -53,7 +53,7 @@
 				<f:for each="{eventGroup.events}" as="event">
 				<tr>
 					<td class="col-icon" nowrap="nowrap"></td>
-					<td class="col-title" nowrap="nowrap"><span class=""><core:icon identifier="danceclub-calendar-o" size="small" />{event.name}</span></td>
+					<td class="col-title" nowrap="nowrap"><span class=""><f:link.action action="detail" arguments="{event:event, eventGroup:eventGroup}"><core:icon identifier="danceclub-calendar-o" size="small" /> {event.name}</f:link.action></span></td>
 					<td class="col-control" nowrap="nowrap"></td>
 					<td class="col-control" nowrap="nowrap">
 						<div class="btn-group" role="group">
@@ -96,12 +96,12 @@
 	<h3>Buttons with icons</h3>
 
 	<div class="example">
-		<a href="#" class="btn btn-default"><co:icon identifier="apps-filetree-folder-default" />  Default button</a>
-		<a href="#" class="btn btn-primary"><co:icon identifier="apps-filetree-folder-default" />  Primary button</a>
-		<a href="#" class="btn btn-success"><co:icon identifier="apps-filetree-folder-default" />  Success button</a>
-		<a href="#" class="btn btn-warning"><co:icon identifier="apps-filetree-folder-default" />  Warning button</a>
-		<a href="#" class="btn btn-danger"><co:icon identifier="apps-filetree-folder-default" />  Danger button</a>
-		<a href="#" class="btn btn-link"><co:icon identifier="apps-filetree-folder-default" />  Link button</a>
+		<a href="#" class="btn btn-default"><core:icon identifier="apps-filetree-folder-default" />  Default button</a>
+		<a href="#" class="btn btn-primary"><core:icon identifier="apps-filetree-folder-default" />  Primary button</a>
+		<a href="#" class="btn btn-success"><core:icon identifier="apps-filetree-folder-default" />  Success button</a>
+		<a href="#" class="btn btn-warning"><core:icon identifier="apps-filetree-folder-default" />  Warning button</a>
+		<a href="#" class="btn btn-danger"><core:icon identifier="apps-filetree-folder-default" />  Danger button</a>
+		<a href="#" class="btn btn-link"><core:icon identifier="apps-filetree-folder-default" />  Link button</a>
 	</div>
 
 	<sg:code language="html" codeonly="true">
@@ -119,12 +119,12 @@
 
 	<h3>Disabled buttons</h3>
 	<div class="example">
-		<a href="#" class="btn btn-default disabled"><co:icon identifier="apps-filetree-folder-default" />  Default button</a>
-		<a href="#" class="btn btn-primary disabled"><co:icon identifier="apps-filetree-folder-default" />  Primary button</a>
-		<a href="#" class="btn btn-success disabled"><co:icon identifier="apps-filetree-folder-default" />  Success button</a>
-		<a href="#" class="btn btn-warning disabled"><co:icon identifier="apps-filetree-folder-default" />  Warning button</a>
-		<a href="#" class="btn btn-danger disabled"><co:icon identifier="apps-filetree-folder-default" />  Danger button</a>
-		<a href="#" class="btn btn-link disabled"><co:icon identifier="apps-filetree-folder-default" />  Link button</a>
+		<a href="#" class="btn btn-default disabled"><core:icon identifier="apps-filetree-folder-default" />  Default button</a>
+		<a href="#" class="btn btn-primary disabled"><core:icon identifier="apps-filetree-folder-default" />  Primary button</a>
+		<a href="#" class="btn btn-success disabled"><core:icon identifier="apps-filetree-folder-default" />  Success button</a>
+		<a href="#" class="btn btn-warning disabled"><core:icon identifier="apps-filetree-folder-default" />  Warning button</a>
+		<a href="#" class="btn btn-danger disabled"><core:icon identifier="apps-filetree-folder-default" />  Danger button</a>
+		<a href="#" class="btn btn-link disabled"><core:icon identifier="apps-filetree-folder-default" />  Link button</a>
 	</div>
 
 	<sg:code language="html" codeonly="true">

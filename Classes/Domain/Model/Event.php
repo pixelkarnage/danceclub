@@ -116,6 +116,14 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\PlanT\Danceclub\Domain\Model\Venue>
      */
     protected $venues = NULL;
+
+    /**
+     * maximum participants
+     * 
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\PlanT\Danceclub\Domain\Model\Venue>
+     * @transient
+     */
+    protected $bookings = NULL;
     
      /**
      * Event Groups
@@ -568,5 +576,60 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setBookingCount($bookingCount)
     {
         $this->bookingCount = $bookingCount;
+    }
+
+    /**
+     * Adds a Booking
+     * 
+     * @param \PlanT\Danceclub\Domain\Model\Booking $booking
+     * @return void
+     */
+    public function addBooking(\PlanT\Danceclub\Domain\Model\Booking $booking)
+    {
+        $this->bookings->attach($booking);
+    }
+    
+    /**
+     * Removes a Booking
+     * 
+     * @param \PlanT\Danceclub\Domain\Model\Booking $bookingToRemove The Booking to be removed
+     * @return void
+     */
+    public function removeBooking(\PlanT\Danceclub\Domain\Model\Booking $bookingToRemove)
+    {
+        $this->bookings->detach($bookingToRemove);
+    }
+
+
+    /**
+     * Removes a Booking
+     * 
+     * @param $queryResult The Booking to be removed
+     * @return void
+     */
+    public function setQueryBookings($queryResult)
+    {
+        $this->bookings = $queryResult;
+    }
+    
+    /**
+     * Returns the Bookings
+     * 
+     * @return \PlanT\Danceclub\Domain\Model\Booking $bookings
+     */
+    public function getBookings()
+    {
+        return $this->bookings;
+    }
+    
+    /**
+     * Sets the Bookings
+     * 
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\PlanT\Danceclub\Domain\Model\Booking> $booking
+     * @return void
+     */
+    public function setBookings(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $bookings)
+    {
+        $this->bookings = $bookings;
     }
 }
