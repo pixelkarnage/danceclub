@@ -15,93 +15,42 @@ namespace PlanT\Danceclub\ViewHelpers\Be;
  */
 
 use TYPO3\CMS\Backend\Utility\BackendUtility;
-use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Fluid\Core\Rendering\RenderingContextInterface;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
-use TYPO3\CMS\Fluid\Core\ViewHelper\Facets\CompilableInterface;
-
 /**
- * Render a link to DataHandler command
- * @internal
+ * A view helper for creating edit on click links.
  */
-class IssueCommandViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper
+class IssueCommandViewHelper extends AbstractTagBasedViewHelper
 {
     /**
      * @var string
      */
     protected $tagName = 'a';
-
     /**
-     * Initialize arguments
-     *
-     * @return void
-     * @api
+     * Arguments initialization.
      */
-    public function initializeArguments() {
-        $this->registerUniversalTagAttributes();
-        /*$this->registerTagAttribute('name', 'string', 'Specifies the name of an anchor');
-        $this->registerTagAttribute('target', 'string', 'Specifies where to open the linked document');*/
-    }
-
-    /**
-     * Crafts a link to edit a database record or create a new one
-     *
-     * @param string $parameters Query string parameters
-     * @return string The <a> tag
-     * @see \TYPO3\CMS\Backend\Utility\BackendUtility::getLinkToDataHandlerAction()
-     */
-    public function render($parameters) {
-
-        $this->tag->addAttribute('href', $this->renderUrl($parameters));
-
-        $this->tag->setContent($this->renderChildren());
-        $this->tag->forceClosingTag(TRUE);
-        return $this->tag->render();
-    }
-    
-    /**
-     * Returns a URL with a command to TYPO3 Core Engine (tce_db.php)
-     *
-     * @param string $parameters Is a set of GET params to send to tce_db.php. Example: "&cmd[tt_content][123][move]=456" or "&data[tt_content][123][hidden]=1&data[tt_content][123][title]=Hello%20World
-     * @param string $redirectUrl Redirect URL if any other that \TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('REQUEST_URI') is wished
-     *
-     * @return string URL to tce_db.php + parameters
-     * @see \TYPO3\CMS\Backend\Utility\BackendUtility::getLinkToDataHandlerAction()
-     */
-    public function renderUrl($parameters, $redirectUrl = '')
+    public function initializeArguments()
     {
-        return static::renderUrlStatic(
-            array(
-                'parameters' => $parameters,
-                'redirectUrl' => $redirectUrl
-            ),
-            $this->buildRenderChildrenClosure(),
-            $this->renderingContext
-        );
+        $this->registerUniversalTagAttributes();
     }
-
     /**
-     * @param array $arguments
-     * @param callable $renderChildrenClosure
-     * @param RenderingContextInterface $renderingContext
+     * Returns a link with a command to TYPO3 Core Engine (tce_db.php).
+     *
+     * @see DocumentTemplate::issueCommand()
+     *
+     * @param string     $parameters
+     * @param string|int $redirectUrl
      *
      * @return string
      */
-    public static function renderUrlStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext)
+    public function render($parameters, $redirectUrl = '')
     {
-        /** @var BackendUserAuthentication $beUser */
-        $beUser = $GLOBALS['BE_USER'];
-        $urlParameters = [
-            'vC' => $beUser->veriCode(),
-            'prErr' => 1,
-            'uPT' => 1,
-            'redirect' => $arguments['redirectUrl'] ?: GeneralUtility::getIndpEnv('REQUEST_URI')
-        ];
-        if (isset($arguments['parameters'])) {
-            $parametersArray = GeneralUtility::explodeUrl2Array($arguments['parameters']);
-            $urlParameters += $parametersArray;
-        }
-        return htmlspecialchars(BackendUtility::getModuleUrl('tce_db', $urlParameters));
+        // Needed in 7.x and 8.x
+        $parameters = '&id='.intval(GeneralUtility::_GP('id')).'&'.$parameters;
+        $href = BackendUtility::getLinkToDataHandlerAction($parameters, $redirectUrl);
+        $this->tag->addAttribute('href', $href);
+        $this->tag->setContent($this->renderChildren());
+        $this->tag->forceClosingTag(true);
+        return $this->tag->render();
     }
 }

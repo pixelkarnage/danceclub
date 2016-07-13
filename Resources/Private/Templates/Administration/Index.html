@@ -33,8 +33,8 @@
 		                </div>
 		                <div class="btn-group" role="group">
 		                    <f:if condition="{eventGroup.activateBooking}">
-		                    	<f:then><t:be.issueCommand class="btn btn-default t3js-record-hide" parameters="data[tx_danceclub_domain_model_eventgroup][{eventGroup.uid}][activateBooking]=0"><core:icon identifier="actions-edit-hide" size="small" /></t:be.issueCommand></f:then>
-		                    	<f:else><t:be.issueCommand class="btn btn-default t3js-record-unhide" parameters="data[tx_danceclub_domain_model_eventgroup][{eventGroup.uid}][activateBooking]=1"><core:icon identifier="actions-edit-unhide" size="small" /></t:be.issueCommand></f:else>
+		                    	<f:then><t:be.issueCommand class="btn btn-default t3js-record-hide" parameters="&data[tx_danceclub_domain_model_eventgroup][{eventGroup.uid}][activateBooking]=0"><core:icon identifier="actions-edit-hide" size="small" /></t:be.issueCommand></f:then>
+		                    	<f:else><t:be.issueCommand class="btn btn-default t3js-record-unhide" parameters="&data[tx_danceclub_domain_model_eventgroup][{eventGroup.uid}][activateBooking]=1"><core:icon identifier="actions-edit-unhide" size="small" /></t:be.issueCommand></f:else>
 		                    </f:if>
 		                </div>
 					</td>
@@ -61,8 +61,8 @@
 		                </div>
 		                <div class="btn-group" role="group">
 		                    <f:if condition="{event.bookable}">
-		                    	<f:then><t:be.issueCommand class="btn btn-default t3js-record-hide" parameters="data[tx_danceclub_domain_model_event][{event.uid}][bookable]=0"><core:icon identifier="actions-edit-hide" size="small" /></t:be.issueCommand></f:then>
-		                    	<f:else><t:be.issueCommand class="btn btn-default t3js-record-unhide" parameters="data[tx_danceclub_domain_model_event][{event.uid}][bookable]=1"><core:icon identifier="actions-edit-unhide" size="small" /></t:be.issueCommand></f:else>
+		                    	<f:then><t:be.issueCommand class="btn btn-default t3js-record-hide" parameters="&data[tx_danceclub_domain_model_event][{event.uid}][bookable]=0"><core:icon identifier="actions-edit-hide" size="small" /></t:be.issueCommand></f:then>
+		                    	<f:else><t:be.issueCommand class="btn btn-default t3js-record-unhide" parameters="&data[tx_danceclub_domain_model_event][{event.uid}][bookable]=1"><core:icon identifier="actions-edit-unhide" size="small" /></t:be.issueCommand></f:else>
 		                    </f:if>
 		                </div>
 					</td>
