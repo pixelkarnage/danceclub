@@ -1,0 +1,63 @@
+<tr>
+    <td class="col-icon" nowrap="nowrap">
+    </td>
+    <td class="col-title" nowrap="nowrap">
+        <span class="">
+            <f:link.action action="detail" arguments="{event:event, eventGroup:eventGroup}">
+                <core:icon identifier="danceclub-calendar-o" size="small" /> {event.name}
+            </f:link.action>
+        </span>
+    </td>
+    <td class="col-control" nowrap="nowrap">
+    </td>
+    <td class="col-control" nowrap="nowrap">
+        <div class="btn-group" role="group">
+            <t:be.editRecord class="btn btn-default" parameters="edit[tx_danceclub_domain_model_event][{event.uid}]=edit" title="Veranstaltung bearbeiten">
+                <core:icon identifier="actions-open" size="small" />
+            </t:be.editRecord>
+        </div>
+        <div class="btn-group" role="group">
+            <f:if condition="{event.bookable}">
+                <f:then>
+                    <t:be.issueCommand class="btn btn-default t3js-record-hide" parameters="&data[tx_danceclub_domain_model_event][{event.uid}][bookable]=0">
+                        <core:icon identifier="actions-edit-hide" size="small" />
+                    </t:be.issueCommand>
+                </f:then>
+                <f:else>
+                    <t:be.issueCommand class="btn btn-default t3js-record-unhide" parameters="&data[tx_danceclub_domain_model_event][{event.uid}][bookable]=1">
+                        <core:icon identifier="actions-edit-unhide" size="small" />
+                    </t:be.issueCommand>
+                </f:else>
+            </f:if>
+            <f:if condition="{event.canceled}">
+                <f:then>
+                    <t:be.issueCommand class="btn btn-default t3js-record-unhide" parameters="&data[tx_danceclub_domain_model_event][{event.uid}][canceled]=0">
+                        <core:icon identifier="actions-edit-unhide" size="small" /> Reaktivieren
+                    </t:be.issueCommand>
+                </f:then>
+                <f:else>
+                    <t:be.issueCommand class="btn btn-default t3js-record-hide" parameters="&data[tx_danceclub_domain_model_event][{event.uid}][canceled]=1">
+                        <core:icon identifier="actions-edit-hide" size="small" /> Absagen
+                    </t:be.issueCommand>
+                </f:else>
+            </f:if>
+        </div>
+    </td>
+    <td nowrap="nowrap">
+        <f:if condition="{event.bookable}">
+            <f:then>
+                <f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.true">
+                </f:translate>
+            </f:then>
+            <f:else>
+                <f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.false">
+                </f:translate>
+            </f:else>
+        </f:if>
+    </td>
+    <td align="right">
+        <f:if condition="{event.bookable}">
+            {event.bookingCount}
+        </f:if>
+    </td>
+</tr>

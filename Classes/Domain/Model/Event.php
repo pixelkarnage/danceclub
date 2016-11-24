@@ -118,9 +118,8 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $venues = NULL;
 
     /**
-     * maximum participants
+     * Bookings for Backend
      * 
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\PlanT\Danceclub\Domain\Model\Venue>
      * @transient
      */
     protected $bookings = NULL;

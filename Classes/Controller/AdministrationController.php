@@ -236,7 +236,7 @@ class AdministrationController extends \PlanT\Danceclub\Controller\AbstractContr
         //rawurlencode(BackendUtilityCore::getModuleUrl('web_danceclubadmin')));
         $bookings = $this->bookingRepository->findBookingsOfEvent($event);
 
-       // \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump(ksort();
+       //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($eventGroup);
 
         $assignedValues = [
             'eventGroup' => $eventGroup,
@@ -251,7 +251,7 @@ class AdministrationController extends \PlanT\Danceclub\Controller\AbstractContr
     }
 
     /**
-     * Splits all Bookings By DanceStyle
+     * Returns the given List of bookings separated by DanceStyle
      * 
      * @param array $bookings
      * @return array $splitBookings 
@@ -273,7 +273,9 @@ class AdministrationController extends \PlanT\Danceclub\Controller\AbstractContr
                         break;
                 }
             }
-            ksort($splitBookings);
+            if (!empty($splitBookings)){
+               ksort($splitBookings); 
+            }
             return $splitBookings;
         }
         return '';

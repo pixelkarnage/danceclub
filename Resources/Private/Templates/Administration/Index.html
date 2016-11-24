@@ -1,198 +1,364 @@
 {namespace t=PlanT\Danceclub\ViewHelpers}
 {namespace core=TYPO3\CMS\Core\ViewHelpers}
 {namespace bu=TYPO3\CMS\Beuser\ViewHelpers}
-
 <f:layout name="Backend/Default" />
-
 <f:section name="content">
-<f:be.pageRenderer pageTitle="{f:translate(key:'LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.pageTitle')}" loadExtJs="1" loadExtJsTheme="1" enableExtJsDebug="1" loadJQuery="1" />
-<t:includeFile path="../typo3conf/ext/danceclub/Resources/Public/Css/administration.css" />
-<f:if condition="{eventGroups}">
-<f:then>
-	<div class="table-fit">
-		<table class="table table-striped table-hover danceclub-eventgroup-list" data-table="pages" id="danceclub-eventgroup-list">
-			<thead>
-				<tr class="t3-row-header">
-					<th class="col-icon" nowrap="nowrap"></th>
-					<th  class="col-title" title="{f:translate(key:'tx_danceclub_domain_model_eventgroup.title')}" nowrap="nowrap"><f:translate key="tx_danceclub_domain_model_eventgroup.title" /></th>
-					<th class="col-control" nowrap="nowrap"></th>
-					<th class="col-control" nowrap="nowrap"></th>
-					<th title="{f:translate(key:'LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.bookable')}" nowrap="nowrap"><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.bookable" /></th>
-					<th title="{f:translate(key:'LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.bookingCount')}"  nowrap="nowrap"><f:translate key="tx_danceclub_domain_model_eventgroup.bookingCount" /></th>
-				</tr>
-			</thead>
-
-			<tbody>
-			<f:for each="{eventGroups}" as="eventGroup" key="extensionKey">
-				<tr>
-					<td class="col-icon" nowrap="nowrap"><core:icon identifier="danceclub-archive" size="default" /></td>
-					<td class="col-title" nowrap="nowrap"><strong>{eventGroup.title}</strong></td>
-					<td class="col-control" nowrap="nowrap">
-						<div class="btn-group" role="group">
-		                    <t:be.editRecord class="btn btn-default" title="Kursprogramm bearbeiten" parameters="edit[tx_danceclub_domain_model_eventgroup][{eventGroup.uid}]=edit"><core:icon identifier="actions-open" size="small" /></t:be.editRecord>
-		                </div>
-		                <div class="btn-group" role="group">
-		                    <f:if condition="{eventGroup.activateBooking}">
-		                    	<f:then><t:be.issueCommand class="btn btn-default t3js-record-hide" parameters="&data[tx_danceclub_domain_model_eventgroup][{eventGroup.uid}][activateBooking]=0"><core:icon identifier="actions-edit-hide" size="small" /></t:be.issueCommand></f:then>
-		                    	<f:else><t:be.issueCommand class="btn btn-default t3js-record-unhide" parameters="&data[tx_danceclub_domain_model_eventgroup][{eventGroup.uid}][activateBooking]=1"><core:icon identifier="actions-edit-unhide" size="small" /></t:be.issueCommand></f:else>
-		                    </f:if>
-		                </div>
-					</td>
-					<td class="col-control" nowrap="nowrap"></td>
-					<td>
-						<f:if condition="{eventGroup.activateBooking}">
-							<f:then><strong><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.true" /></strong></f:then>
-							<f:else><strong><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.false" /></strong></f:else>
-						</f:if>
-					</td>
-					<td align="right">Total: <strong>{eventGroup.bookingCount}</strong></td>
-				</tr>
-				
-				<f:if condition="{eventGroup.events}">
-				<f:then>
-				<f:for each="{eventGroup.events}" as="event">
-				<tr>
-					<td class="col-icon" nowrap="nowrap"></td>
-					<td class="col-title" nowrap="nowrap"><span class=""><f:link.action action="detail" arguments="{event:event, eventGroup:eventGroup}"><core:icon identifier="danceclub-calendar-o" size="small" /> {event.name}</f:link.action></span></td>
-					<td class="col-control" nowrap="nowrap"></td>
-					<td class="col-control" nowrap="nowrap">
-						<div class="btn-group" role="group">
-		                   <t:be.editRecord class="btn btn-default" title="Veranstaltung bearbeiten" parameters="edit[tx_danceclub_domain_model_event][{event.uid}]=edit"><core:icon identifier="actions-open" size="small" /></t:be.editRecord>
-		                </div>
-		                <div class="btn-group" role="group">
-		                    <f:if condition="{event.bookable}">
-		                    	<f:then><t:be.issueCommand class="btn btn-default t3js-record-hide" parameters="&data[tx_danceclub_domain_model_event][{event.uid}][bookable]=0"><core:icon identifier="actions-edit-hide" size="small" /></t:be.issueCommand></f:then>
-		                    	<f:else><t:be.issueCommand class="btn btn-default t3js-record-unhide" parameters="&data[tx_danceclub_domain_model_event][{event.uid}][bookable]=1"><core:icon identifier="actions-edit-unhide" size="small" /></t:be.issueCommand></f:else>
-		                    </f:if>
-		                </div>
-					</td>
-					<td nowrap="nowrap">
-
-						<f:if condition="{event.bookable}">
-							<f:then><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.true" /></f:then>
-							<f:else><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.false" /></f:else>
-						</f:if>
-
-					</td>
-					<td align="right"><f:if condition="{event.bookable}">{event.bookingCount}</f:if></td>
-				</tr>
-				</f:for>
-				</f:then>
-				<f:else>
-				<tr>
-					<td></td>
-					<td><span class="tab">N/A</span></td>
-					<td></td>
-					<td></td>
-				</tr>
-				</f:else>
-				</f:if>
-			</f:for>
-			</tbody>
-		</table>
-
-	</div>
-
-	<h3>Buttons with icons</h3>
-
-	<div class="example">
-		<a href="#" class="btn btn-default"><core:icon identifier="apps-filetree-folder-default" />  Default button</a>
-		<a href="#" class="btn btn-primary"><core:icon identifier="apps-filetree-folder-default" />  Primary button</a>
-		<a href="#" class="btn btn-success"><core:icon identifier="apps-filetree-folder-default" />  Success button</a>
-		<a href="#" class="btn btn-warning"><core:icon identifier="apps-filetree-folder-default" />  Warning button</a>
-		<a href="#" class="btn btn-danger"><core:icon identifier="apps-filetree-folder-default" />  Danger button</a>
-		<a href="#" class="btn btn-link"><core:icon identifier="apps-filetree-folder-default" />  Link button</a>
-	</div>
-
-	<sg:code language="html" codeonly="true">
-		<a href="#" class="btn btn-default"><core:icon identifier="apps-filetree-folder-default" />  Default button</a>
-		<a href="#" class="btn btn-primary"><core:icon identifier="apps-filetree-folder-default" />  Primary button</a>
-		<a href="#" class="btn btn-success"><core:icon identifier="apps-filetree-folder-default" />  Success button</a>
-		<a href="#" class="btn btn-warning"><core:icon identifier="apps-filetree-folder-default" />  Warning button</a>
-		<a href="#" class="btn btn-danger"><core:icon identifier="apps-filetree-folder-default" />  Danger button</a>
-		<a href="#" class="btn btn-link"><core:icon identifier="apps-filetree-folder-default" />  Link button</a>
-	</sg:code>
-
-	<!--
+    <t:includeFile path="../typo3conf/ext/danceclub/Resources/Public/Css/administration.css" />
+    <f:if condition="{eventGroups}">
+        <f:then>
+            <div class="table-fit">
+                <table class="table table-striped table-hover danceclub-eventgroup-list" data-table="pages" id="danceclub-eventgroup-list">
+                    <thead>
+                        <tr class="t3-row-header">
+                            <th class="col-icon" nowrap="nowrap">
+                            </th>
+                            <th class="col-title" nowrap="nowrap" title="{f:translate(key:'tx_danceclub_domain_model_eventgroup.title')}">
+                                <f:translate key="tx_danceclub_domain_model_eventgroup.title" />
+                            </th>
+                            <th class="col-control" nowrap="nowrap">
+                            </th>
+                            <th class="col-control" nowrap="nowrap">
+                            </th>
+                            <th nowrap="nowrap" title="{f:translate(key:'LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.bookable')}">
+                                <f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.bookable" />
+                            </th>
+                            <th nowrap="nowrap" title="{f:translate(key:'LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.bookingCount')}">
+                                <f:translate key="tx_danceclub_domain_model_eventgroup.bookingCount" />
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <f:for each="{eventGroups}" as="eventGroup" key="extensionKey">
+                            <tr>
+                                <td class="col-icon" nowrap="nowrap">
+                                    <core:icon identifier="danceclub-archive" size="default" />
+                                </td>
+                                <td class="col-title" nowrap="nowrap">
+                                    <strong>
+                                        {eventGroup.title}
+                                    </strong>
+                                </td>
+                                <td class="col-control" nowrap="nowrap">
+                                    <div class="btn-group" role="group">
+                                        <t:be.editRecord class="btn btn-default" parameters="edit[tx_danceclub_domain_model_eventgroup][{eventGroup.uid}]=edit" title="Kursprogramm bearbeiten">
+                                            <core:icon identifier="actions-open" size="small" />
+                                        </t:be.editRecord>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <f:if condition="{eventGroup.activateBooking}">
+                                            <f:then>
+                                                <t:be.issueCommand class="btn btn-default t3js-record-hide" parameters="&data[tx_danceclub_domain_model_eventgroup][{eventGroup.uid}][activateBooking]=0">
+                                                    <core:icon identifier="actions-edit-hide" size="small" /> Deaktivieren
+                                                </t:be.issueCommand>
+                                            </f:then>
+                                            <f:else>
+                                                <t:be.issueCommand class="btn btn-default t3js-record-unhide" parameters="&data[tx_danceclub_domain_model_eventgroup][{eventGroup.uid}][activateBooking]=1">
+                                                    <core:icon identifier="actions-edit-unhide" size="small" /> Aktivieren
+                                                </t:be.issueCommand>
+                                            </f:else>
+                                        </f:if>
+                                    </div>
+                                </td>
+                                <td class="col-control" nowrap="nowrap">
+                                </td>
+                                <td>
+                                    <f:if condition="{eventGroup.activateBooking}">
+                                        <f:then>
+                                            <strong>
+                                                <f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.true" />
+                                            </strong>
+                                        </f:then>
+                                        <f:else>
+                                            <strong>
+                                                <f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.false" />
+                                            </strong>
+                                        </f:else>
+                                    </f:if>
+                                </td>
+                                <td align="right">
+                                    Total:
+                                    <strong>
+                                        {eventGroup.bookingCount}
+                                    </strong>
+                                </td>
+                            </tr>
+                            <f:if condition="{eventGroup.events}">
+                                <f:then>
+                                    <f:for as="event" each="{eventGroup.events}">
+                                        <f:render arguments="{event:event, eventGroup:eventGroup}" partial="Administration/EventListItem">
+                                        </f:render>
+                                    </f:for>
+                                </f:then>
+                                <f:else>
+                                    <tr>
+                                        <td>
+                                        </td>
+                                        <td>
+                                            N/A
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                </f:else>
+                            </f:if>
+                        </f:for>
+                    </tbody>
+                </table>
+            </div>
+            <h3>
+                Buttons with icons
+            </h3>
+            <div class="example">
+                <a class="btn btn-default" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Default button
+                </a>
+                <a class="btn btn-primary" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Primary button
+                </a>
+                <a class="btn btn-success" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Success button
+                </a>
+                <a class="btn btn-warning" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Warning button
+                </a>
+                <a class="btn btn-danger" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Danger button
+                </a>
+                <a class="btn btn-link" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Link button
+                </a>
+            </div>
+            <sg:code codeonly="true" language="html">
+                <a class="btn btn-default" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Default button
+                </a>
+                <a class="btn btn-primary" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Primary button
+                </a>
+                <a class="btn btn-success" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Success button
+                </a>
+                <a class="btn btn-warning" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Warning button
+                </a>
+                <a class="btn btn-danger" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Danger button
+                </a>
+                <a class="btn btn-link" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Link button
+                </a>
+            </sg:code>
+            <!--
 		Disabled buttons
 	-->
-
-	<h3>Disabled buttons</h3>
-	<div class="example">
-		<a href="#" class="btn btn-default disabled"><core:icon identifier="apps-filetree-folder-default" />  Default button</a>
-		<a href="#" class="btn btn-primary disabled"><core:icon identifier="apps-filetree-folder-default" />  Primary button</a>
-		<a href="#" class="btn btn-success disabled"><core:icon identifier="apps-filetree-folder-default" />  Success button</a>
-		<a href="#" class="btn btn-warning disabled"><core:icon identifier="apps-filetree-folder-default" />  Warning button</a>
-		<a href="#" class="btn btn-danger disabled"><core:icon identifier="apps-filetree-folder-default" />  Danger button</a>
-		<a href="#" class="btn btn-link disabled"><core:icon identifier="apps-filetree-folder-default" />  Link button</a>
-	</div>
-
-	<sg:code language="html" codeonly="true">
-		<a href="#" class="btn btn-default disabled"><core:icon identifier="apps-filetree-folder-default" />  Default button</a>
-		<a href="#" class="btn btn-primary disabled"><core:icon identifier="apps-filetree-folder-default" />  Primary button</a>
-		<a href="#" class="btn btn-success disabled"><core:icon identifier="apps-filetree-folder-default" />  Success button</a>
-		<a href="#" class="btn btn-warning disabled"><core:icon identifier="apps-filetree-folder-default" />  Warning button</a>
-		<a href="#" class="btn btn-danger disabled"><core:icon identifier="apps-filetree-folder-default" />  Danger button</a>
-		<a href="#" class="btn btn-link disabled"><core:icon identifier="apps-filetree-folder-default" />  Link button</a>
-	</sg:code>
-
-
-<table class="table table-striped table-hover">
-		<thead>
-			<tr>
-				<th>Tree & Table Header</th>
-				<th>Table Header <a href="#">link</a> inline</th>
-				<th align="right" width="150">Table Header</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td class="nowrap">Record title on root row</td>
-				<td><a href="#">Donec id elit</a></td>
-				<td align="right">1.900,50</td>
-			</tr>
-			<tr class="active">
-				<td class="nowrap">First row entry record</td>
-				<td><a href="#">Donec id elit</a></td>
-				<td align="right">540,99</td>
-			</tr>
-			<tr class="success">
-				<td class="nowrap">
-					<b>Second row</b>
-					<small>not second class</small>
-				</td>
-				<td><a href="#">Donec id elit</a></td>
-				<td align="right">9.300,20</td>
-			</tr>
-			<tr class="info">
-				<td class="nowrap">Magic third row</td>
-				<td><a href="#">Donec id elit</a></td>
-				<td align="right">9.300,20</td>
-			</tr>
-			<tr class="warning">
-				<td class="nowrap">Record title always bold</td>
-				<td><a href="#">Donec id elit</a></td>
-				<td align="right">0,00</td>
-			</tr>
-			<tr class="danger">
-				<td>Record title always bold</td>
-				<td><a href="#">Donec id elit</a></td>
-				<td align="right">0,00</td>
-			</tr>
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="4">
-					X.XXX,XX Entries
-				</td>
-			</tr>
-		</tfoot>
-	</table>
-	
-</f:then>
-<f:else>
-	<f:flashMessages />
-</f:else>
-</f:if>
-
+            <h3>
+                Disabled buttons
+            </h3>
+            <div class="example">
+                <a class="btn btn-default disabled" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Default button
+                </a>
+                <a class="btn btn-primary disabled" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Primary button
+                </a>
+                <a class="btn btn-success disabled" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Success button
+                </a>
+                <a class="btn btn-warning disabled" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Warning button
+                </a>
+                <a class="btn btn-danger disabled" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Danger button
+                </a>
+                <a class="btn btn-link disabled" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Link button
+                </a>
+            </div>
+            <sg:code codeonly="true" language="html">
+                <a class="btn btn-default disabled" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Default button
+                </a>
+                <a class="btn btn-primary disabled" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Primary button
+                </a>
+                <a class="btn btn-success disabled" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Success button
+                </a>
+                <a class="btn btn-warning disabled" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Warning button
+                </a>
+                <a class="btn btn-danger disabled" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Danger button
+                </a>
+                <a class="btn btn-link disabled" href="#">
+                    <core:icon identifier="apps-filetree-folder-default">
+                    </core:icon>
+                    Link button
+                </a>
+            </sg:code>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Tree & Table Header
+                        </th>
+                        <th>
+                            Table Header
+                            <a href="#">
+                                link
+                            </a>
+                            inline
+                        </th>
+                        <th align="right" width="150">
+                            Table Header
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="nowrap">
+                            Record title on root row
+                        </td>
+                        <td>
+                            <a href="#">
+                                Donec id elit
+                            </a>
+                        </td>
+                        <td align="right">
+                            1.900,50
+                        </td>
+                    </tr>
+                    <tr class="active">
+                        <td class="nowrap">
+                            First row entry record
+                        </td>
+                        <td>
+                            <a href="#">
+                                Donec id elit
+                            </a>
+                        </td>
+                        <td align="right">
+                            540,99
+                        </td>
+                    </tr>
+                    <tr class="success">
+                        <td class="nowrap">
+                            <b>
+                                Second row
+                            </b>
+                            <small>
+                                not second class
+                            </small>
+                        </td>
+                        <td>
+                            <a href="#">
+                                Donec id elit
+                            </a>
+                        </td>
+                        <td align="right">
+                            9.300,20
+                        </td>
+                    </tr>
+                    <tr class="info">
+                        <td class="nowrap">
+                            Magic third row
+                        </td>
+                        <td>
+                            <a href="#">
+                                Donec id elit
+                            </a>
+                        </td>
+                        <td align="right">
+                            9.300,20
+                        </td>
+                    </tr>
+                    <tr class="warning">
+                        <td class="nowrap">
+                            Record title always bold
+                        </td>
+                        <td>
+                            <a href="#">
+                                Donec id elit
+                            </a>
+                        </td>
+                        <td align="right">
+                            0,00
+                        </td>
+                    </tr>
+                    <tr class="danger">
+                        <td>
+                            Record title always bold
+                        </td>
+                        <td>
+                            <a href="#">
+                                Donec id elit
+                            </a>
+                        </td>
+                        <td align="right">
+                            0,00
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">
+                            X.XXX,XX Entries
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </f:then>
+        <f:else>
+            <f:flashmessages>
+            </f:flashmessages>
+        </f:else>
+    </f:if>
 </f:section>
