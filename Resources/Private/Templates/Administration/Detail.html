@@ -7,70 +7,69 @@
 <f:section name="content">
 <f:be.pageRenderer pageTitle="{f:translate(key:'LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.pageTitle')}" loadExtJs="1" loadExtJsTheme="1" enableExtJsDebug="1" loadJQuery="1" />
 <t:includeFile path="../typo3conf/ext/danceclub/Resources/Public/Css/administration.css" />
+
 <f:if condition="{eventGroup}">
 <f:then>
-<f:if condition="{event}">
-<f:then>
+	<f:if condition="{events}">
+		<f:then>
+		<h1>{eventGroup.title}</h1>
+		<f:for each="{events}" as="event">
+			<h3><core:icon identifier="danceclub-calendar-o" size="small" /> {event.name}</h3>
+			<f:if condition="{event.teachers -> f:count()}>=1">
+				<f:then>
+				<h4> mit <f:for each="{event.teachers}" as="teacher" iteration="iterator">{teacher.name} <f:if condition="{iterator.isLast}"><f:then></f:then><f:else> &amp; </f:else></f:if></f:for></h4>
+				</f:then>
+				<f:else><i>Für diese Veranstaltung sind keine Lehrer Angegeben</i></f:else>
+			</f:if>
+			{event.description -> f:format.html()}
+			<ul class="right"> 
+				<li class="wann title">Wann?</li>
+					
+				</li> 
 
-
-<h1>{event.name}</h1>
-<f:if condition="{event.teachers -> f:count()}>=1">
-	<f:then>
-<h4> mit <f:for each="{event.teachers}" as="teacher" iteration="iterator">{teacher.name} <f:if condition="{iterator.isLast}"><f:then></f:then><f:else> &amp; </f:else></f:if></f:for></h4>
-	</f:then>
-	<f:else><i>Für diese Veranstaltung sind keine Lehrer Angegeben</i></f:else>
-</f:if>
-{event.description -> f:format.html()}
-<ul class="right"> 
-	<li class="wann title">Wann?</li>
-		<f:for each="{eventDates}" as="dates">
-			<f:for each="{dates}" as="date">
-				<f:if condition="{date.foreignUid}=={event.uid}">
-				<li><f:format.date format="d.m.Y">{date.startDate}</f:format.date>, <f:format.date format="H<\s\up>i</\s\up>">{date.startTime}</f:format.date>-<f:format.date format="H<\s\up>i</\s\up>">{date.endTime}</f:format.date></li>
+				<f:if condition="{event.venues -> f:count()}>=1">
+					<f:then>
+						<li class="title">Wo?</li>
+						<f:for each="{event.venues}" as="venue" iteration="iterator"><li>{venue.name}</li></f:for>
+					</f:then>
+					<f:else></f:else>
 				</f:if>
-			</f:for>
+				<f:if condition="{event.price}">
+					<f:then>
+					<li class="title">Preis</li>
+					<li class="price">{event.price}.-</li>
+					</f:then>
+				</f:if>
+			</ul>
+
+			<f:if condition="{event.bookings}">
+			<f:then>
+
+			<div class="colmask threecol">
+				<div class="colmid">
+					<div class="colleft">
+						<f:for each="{event.bookings}" as="splitBookings" iteration="iterator">
+						<ol class="col{iterator.cycle}">
+							<li><core:icon identifier="danceclub-danceStyle-{splitBookings.0.danceStyle}" size="default" /></li>
+							<f:for each="{splitBookings}" as="booking">
+							<li>{booking.name}, {booking.danceStyle}</li>
+							</f:for>
+						</ol>
+						</f:for>
+					</div>
+				</div>
+			</div>
+			</f:then>
+			<f:else>
+				<i>Keine Buchungen für diese Veranstaltung</i>
+			</f:else>
+			</f:if>
 		</f:for>
-	</li> 
-
-	<f:if condition="{event.venues -> f:count()}>=1">
-		<f:then>
-			<li class="title">Wo?</li>
-			<f:for each="{event.venues}" as="venue" iteration="iterator"><li>{venue.name}</li></f:for>
 		</f:then>
-		<f:else></f:else>
+		<f:else>
+		<i>Keine Veranstaltungen für dieses Kursprogramm</i>
+		</f:else>
 	</f:if>
-	<f:if condition="{event.price}">
-		<f:then>
-		<li class="title">Preis</li>
-		<li class="price">{event.price}.-</li>
-		</f:then>
-	</f:if>
-</ul>
-<f:if condition="{bookings}">
-<f:then>
-
-<div class="colmask threecol">
-	<div class="colmid">
-		<div class="colleft">
-			<f:for each="{bookings}" as="splitBookings" iteration="iterator">
-			<ol class="col{iterator.cycle}">
-				<li><core:icon identifier="danceclub-danceStyle-{splitBookings.0.danceStyle}" size="default" /></li>
-				<f:for each="{splitBookings}" as="booking">
-				<li>{booking.name}, {booking.danceStyle}</li>
-				</f:for>
-			</ol>
-			</f:for>
-		</div>
-	</div>
-</div>
-</f:then>
-<f:else>
-	<i>Keine Buchungen für diese Veranstaltung</i>
-</f:else>
-</f:if>
-
-</f:then>
-</f:if>
 </f:then>
 <f:else>
 	<f:flashMessages />

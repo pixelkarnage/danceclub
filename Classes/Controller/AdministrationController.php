@@ -205,10 +205,9 @@ class AdministrationController extends \PlanT\Danceclub\Controller\AbstractContr
                 $event->setBookingCount($bookingCount);
                 $totalBookingCount = $totalBookingCount+$bookingCount;
                 //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($bookingCount);
-
             }
 
-            $eventGroup->setQueryEvents($events);
+            $eventGroup->setEventsByQuery($events);
             $eventGroup->setBookingCount($totalBookingCount);
          }
 
@@ -227,22 +226,24 @@ class AdministrationController extends \PlanT\Danceclub\Controller\AbstractContr
      /**
      * Detail action for administration
      *  
-     * @param \PlanT\Danceclub\Domain\Model\Event $event
      * @param \PlanT\Danceclub\Domain\Model\EventGroup $eventGroup
      * @return void
      */
-    public function detailAction(\PlanT\Danceclub\Domain\Model\Event $event, \PlanT\Danceclub\Domain\Model\EventGroup $eventGroup)
+    public function detailAction(\PlanT\Danceclub\Domain\Model\EventGroup $eventGroup)
     {
         //rawurlencode(BackendUtilityCore::getModuleUrl('web_danceclubadmin')));
-        $bookings = $this->bookingRepository->findBookingsOfEvent($event);
+        $events = $this->eventRepository->findByEventGroups($eventGroup, NULL, false, true);
+        foreach ($events as $event){
+            $event->setQueryBookings($this->bookingRepository->findBookingsOfEvent($event));
+        }
+        
 
        //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($eventGroup);
 
         $assignedValues = [
             'eventGroup' => $eventGroup,
-            'event' => $event,
-            'eventDates' => $this->getEventOccurences($event),
-            'bookings' => $this->splitBookingsByDanceStyle($bookings),
+            'events' => $events,
+            'eventDates' => $this->getEventOccurences($events),
             'danceStyleOptions' => $this->getDanceStyleOptions(),
             'returnUrl' => rawurlencode(BackendUtilityCore::getModuleUrl('web_DanceclubDanceclubadmin'))
         ];

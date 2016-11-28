@@ -10,7 +10,7 @@
 				<source>Bookable?</source>
 			</trans-unit>
 			<trans-unit id="administration.bookingCount">
-				<source>Bookings</source>
+				<source>Total Bookings</source>
 			</trans-unit>
 			<trans-unit id="administration.true">
 				<source>Yes</source>

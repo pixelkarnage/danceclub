@@ -7,13 +7,45 @@
 				<source>Dance Club Administration</source>
 				<target>Plan-T Kursadministration</target>
 			</trans-unit>
+			<trans-unit id="administration.bookable">
+				<source>Bookable?</source>
+				<target>Buchbar?</target>
+			</trans-unit>
+			<trans-unit id="administration.bookingCount">
+				<source>Total Bookings</source>
+				<target>Anzahl Buchungen</target>
+			</trans-unit>
 			<trans-unit id="administration.true">
 				<source>Yes</source>
-				<targe>Ja</targe>
+				<target>Ja</target>
 			</trans-unit>
 			<trans-unit id="administration.false">
 				<source>No</source>
-				<targe>Nein</targe>
+				<target>Nein</target>
+			</trans-unit>
+			<trans-unit id="administration.eventGroupListing">
+				<source>Dance Club Administration</source>
+				<target>Plan-T Kursadministration</target>
+			</trans-unit>
+			<trans-unit id="administration.newEventGroupRecord">
+				<source>New Event Group</source>
+				<target>Neues Kursprogramm</target>
+			</trans-unit>
+			<trans-unit id="administration.newEventRecord">
+				<source>New Event</source>
+				<target>Neuer Kurs erstellen</target>
+			</trans-unit>
+			<trans-unit id="administration.newBookingRecord">
+				<source>New Booking</source>
+				<target>Neue Buchung erstellen</target>
+			</trans-unit>
+			<trans-unit id="administration.newTypeRecord">
+				<source>New Event Type</source>
+				<target>Neuer Kurstyp erstellen</target>
+			</trans-unit>
+			<trans-unit id="administration.newVenueRecord">
+				<source>New Event Venue</source>
+				<target>Neuer Kursort erstellen</target>
 			</trans-unit>
 		</body>
 	</file>

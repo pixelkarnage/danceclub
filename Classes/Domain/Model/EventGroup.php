@@ -276,10 +276,10 @@ class EventGroup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Removes a Event
      * 
-     * @param $eventsToAdd The Event to be removed
+     * @param $eventsToAdd The Events to be added
      * @return void
      */
-    public function setQueryEvents($eventsToAdd)
+    public function setEventsByQuery($eventsToAdd)
     {
         $this->events = $eventsToAdd;
     }

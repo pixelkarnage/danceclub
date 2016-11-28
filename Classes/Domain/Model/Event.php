@@ -120,6 +120,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Bookings for Backend
      * 
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\PlanT\Danceclub\Domain\Model\Booking>
      * @transient
      */
     protected $bookings = NULL;
