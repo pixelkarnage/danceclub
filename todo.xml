@@ -33,7 +33,13 @@ Version 0.5
 + Implement 
 
 
-
+Version ++:
+- Google API integration: https://www.typo3.net/forum/thematik/zeige/thema/120047/
+- Google Contacts API: https://github.com/rapidwebltd/php-google-contacts-v3-api
+- Google Sheets API: https://developers.google.com/sheets/guides/values#writing_multiple_ranges
+- Make issueCommand work with Google Api
+- Integrate Newsletter Abo on booking
+- WEC Map Plugin
 
 
 

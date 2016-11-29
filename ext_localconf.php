@@ -33,6 +33,10 @@ $danceclubIcons = array(
 	array('identifier' => 'danceclub-danceStyle-0', 'name' => 'transgender-alt'),
 	array('identifier' => 'danceclub-danceStyle-1', 'name' => 'mars'),
 	array('identifier' => 'danceclub-danceStyle-2', 'name' => 'venus'),
+	array('identifier' => 'danceclub-google', 'name' => 'google'),
+	array('identifier' => 'danceclub-cloud-upload', 'name' => 'cloud-upload'),
+	array('identifier' => 'danceclub-fax', 'name' => 'fax'),
+	array('identifier' => 'danceclub-plus', 'name' => 'plus'),
 );
 
 foreach ($danceclubIcons as $danceclubIcon) {

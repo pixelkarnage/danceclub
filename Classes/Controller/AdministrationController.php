@@ -84,7 +84,7 @@ class AdministrationController extends \PlanT\Danceclub\Controller\AbstractContr
         $pageRenderer->loadRequireJsModule('TYPO3/CMS/Backend/ClickMenu');
 
         $this->createMenu();
-        $this->createButtons();
+        //$this->createButtons();
     }
 
     /**
@@ -238,10 +238,10 @@ class AdministrationController extends \PlanT\Danceclub\Controller\AbstractContr
         }
         
 
-       //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($eventGroup);
+       //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($events);
 
         $assignedValues = [
-            'eventGroup' => $eventGroup,
+            //'eventGroup' => $eventGroup,
             'events' => $events,
             'eventDates' => $this->getEventOccurences($events),
             'danceStyleOptions' => $this->getDanceStyleOptions(),

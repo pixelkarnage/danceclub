@@ -141,7 +141,7 @@
 			</trans-unit>
 			<trans-unit id="tx_danceclub_domain_model_booking.dance_style">
 				<source>Dance Style</source>
-				<target>Tanzstil</target>
+				<target>Tanz-Stil</target>
 			</trans-unit>
 			<trans-unit id="tx_danceclub_domain_model_booking.dance_style.0">
 				<source>Both</source>

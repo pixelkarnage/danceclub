@@ -37,7 +37,7 @@
 			</trans-unit>
 			<trans-unit id="administration.newBookingRecord">
 				<source>New Booking</source>
-				<target>Neue Buchung erstellen</target>
+				<target>Neue Kursbuchung erstellen</target>
 			</trans-unit>
 			<trans-unit id="administration.newTypeRecord">
 				<source>New Event Type</source>
@@ -46,6 +46,22 @@
 			<trans-unit id="administration.newVenueRecord">
 				<source>New Event Venue</source>
 				<target>Neuer Kursort erstellen</target>
+			</trans-unit>
+			<trans-unit id="administration.crdate">
+				<source>Creation date</source>
+				<target>Erstellt</target>
+			</trans-unit>
+			<trans-unit id="administration.noTeachers">
+				<source>No Teachers set for this event!</source>
+				<target>Für diese Veranstaltung sind keine Lehrer Angegeben!</target>
+			</trans-unit>
+			<trans-unit id="administration.titleEventGroupView">
+				<source>All Event Groups</source>
+				<target>Alle Kursprogramme</target>
+			</trans-unit>
+			<trans-unit id="administration.sendMailAll">
+				<source>Send E-Mail to all</source>
+				<target>E-Mail an alle senden</target>
 			</trans-unit>
 		</body>
 	</file>

@@ -7,61 +7,69 @@
 <f:section name="content">
 <f:be.pageRenderer pageTitle="{f:translate(key:'LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.pageTitle')}" loadExtJs="1" loadExtJsTheme="1" enableExtJsDebug="1" loadJQuery="1" />
 <t:includeFile path="../typo3conf/ext/danceclub/Resources/Public/Css/administration.css" />
+<t:includeFile path="../typo3conf/ext/danceclub/Resources/Public/Js/sorttable.js" />
 
-<f:if condition="{eventGroup}">
-<f:then>
+
 	<f:if condition="{events}">
 		<f:then>
-		<h1>{eventGroup.title}</h1>
+		<h1><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.titleEventGroupView" /></h1>
 		<f:for each="{events}" as="event">
-			<h3><core:icon identifier="danceclub-calendar-o" size="small" /> {event.name}</h3>
-			<f:if condition="{event.teachers -> f:count()}>=1">
+			<h2><core:icon identifier="danceclub-calendar-o" size="large" /> {event.name} <f:if condition="{event.teachers -> f:count()}>=1">
 				<f:then>
-				<h4> mit <f:for each="{event.teachers}" as="teacher" iteration="iterator">{teacher.name} <f:if condition="{iterator.isLast}"><f:then></f:then><f:else> &amp; </f:else></f:if></f:for></h4>
+				<h4><f:for each="{event.teachers}" as="teacher" iteration="iterator">{teacher.name} <f:if condition="{iterator.isLast}"><f:then></f:then><f:else> &amp; </f:else></f:if></f:for></h4>
 				</f:then>
-				<f:else><i>Für diese Veranstaltung sind keine Lehrer Angegeben</i></f:else>
-			</f:if>
-			{event.description -> f:format.html()}
-			<ul class="right"> 
-				<li class="wann title">Wann?</li>
-					
-				</li> 
-
-				<f:if condition="{event.venues -> f:count()}>=1">
+				<f:else><i><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.noTeachers" /></i></f:else>
+			</f:if></h2>
+			<h5><div class="btn-group" role="group">
+				<a class="btn btn-default" href="#"><core:icon identifier="danceclub-envelope" size="small" /> <f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.sendMailAll" /></a>
+				<f:if condition="{event.bookable}">
 					<f:then>
-						<li class="title">Wo?</li>
-						<f:for each="{event.venues}" as="venue" iteration="iterator"><li>{venue.name}</li></f:for>
-					</f:then>
-					<f:else></f:else>
-				</f:if>
-				<f:if condition="{event.price}">
-					<f:then>
-					<li class="title">Preis</li>
-					<li class="price">{event.price}.-</li>
+						<a class="btn btn-default" href="#"><core:icon identifier="danceclub-plus" size="small" /> <f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.newBookingRecord" /></a>
+						<!--<a class="btn btn-default" href="#"><core:icon identifier="danceclub-cloud-download" size="small" /> Send List to Google Drive</a>-->
 					</f:then>
 				</f:if>
-			</ul>
+				<a class="btn btn-default" href="#"><core:icon identifier="actions-open" size="small" /> Edit {event.name}</a>
+			</div></h5>
 
 			<f:if condition="{event.bookings}">
 			<f:then>
-
-			<div class="colmask threecol">
-				<div class="colmid">
-					<div class="colleft">
-						<f:for each="{event.bookings}" as="splitBookings" iteration="iterator">
-						<ol class="col{iterator.cycle}">
-							<li><core:icon identifier="danceclub-danceStyle-{splitBookings.0.danceStyle}" size="default" /></li>
-							<f:for each="{splitBookings}" as="booking">
-							<li>{booking.name}, {booking.danceStyle}</li>
-							</f:for>
-						</ol>
-						</f:for>
-					</div>
-				</div>
-			</div>
+			<table class="table table-striped table-hover danceclub-eventgroup-list sortable" data-table="pages" id="danceclub-bookings-list">
+			<thead>
+				<th class="col-icon" nowrap="nowrap"></th>
+				<!--<th class="col-nowrap" nowrap="nowrap"><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.crdate" /></th>-->
+				<th class="col-title" nowrap="nowrap"><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_db.xlf:tx_danceclub_domain_model_booking.name" /></th>
+				<th class="col-nowrap" nowrap="nowrap"><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_db.xlf:tx_danceclub_domain_model_booking.dance_style" /></th>
+				<th class="col-nowrap" nowrap="nowrap"><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_db.xlf:tx_danceclub_domain_model_booking.student" /></th>
+				<th class="col-nowrap" nowrap="nowrap"><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_db.xlf:tx_danceclub_domain_model_booking.invoice_amount" /></th>
+				<th class="col-icon" nowrap="nowrap"></th>
+			</thead>
+			<tbody>
+				<f:for each="{event.bookings}" as="booking">
+				<tr>
+					<td><core:icon identifier="danceclub-tag" size="small" /></td>
+					<!--td>{booking.crdate}</td>-->
+					<td>{booking.name}</td>
+					<td><core:icon identifier="danceclub-danceStyle-{booking.danceStyle}" size="small" /><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_db.xlf:tx_danceclub_domain_model_booking.dance_style.{booking.danceStyle}" /></td>
+					<td><f:if condition="{booking.student}"><f:then><core:icon identifier="danceclub-check-square-o" size="small" /></f:then></f:if></td>
+					<td>{booking.invoiceAmount}.- Chf</td>
+					<td class="col-control" nowrap="nowrap">
+                    	<div class="btn-group" role="group">
+                    		<a class="btn btn-default" href="mailto:{booking.email}"><core:icon identifier="danceclub-envelope-o" size="small" /></a>
+                    		<a class="btn btn-default" href="#"><core:icon identifier="danceclub-fax" size="small" /></a>
+                    		<a class="btn btn-default" href="#"><core:icon identifier="actions-open" size="small" /></a>
+                    		<a class="btn btn-default" href="#"><core:icon identifier="actions-delete" size="small" /></a>
+                    	</div>
+					</td>
+				</tr>
+				</f:for>
+			</tbody>
+			</table>
 			</f:then>
 			<f:else>
-				<i>Keine Buchungen für diese Veranstaltung</i>
+				<f:if condition="{event.bookable}">
+					<f:then><i>Keine Buchungen für diese Veranstaltung</i></f:then>
+					<f:else><i>Buchung deaktiviert</i></f:else>
+				</f:if>
 			</f:else>
 			</f:if>
 		</f:for>
@@ -70,10 +78,6 @@
 		<i>Keine Veranstaltungen für dieses Kursprogramm</i>
 		</f:else>
 	</f:if>
-</f:then>
-<f:else>
-	<f:flashMessages />
-</f:else>
-</f:if>
+
 
 </f:section>

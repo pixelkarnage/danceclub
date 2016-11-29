@@ -100,6 +100,14 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @validate NotEmpty
      */
     protected $events = NULL;
+
+    /**
+    * crdate
+    *
+    * @var int
+    */
+    protected $crdate;
+
     
     /**
      * __construct
@@ -121,6 +129,26 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected function initStorageObjects()
     {
         $this->events = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
+
+    /**
+    * Returns the crdate
+    *
+    * @return int crdate
+    */
+    public function getCrdate() 
+    {
+        return $this->crdate;
+    }
+
+    /**
+    * Returns the crdate
+    *
+    * @return int crdate
+    */
+    public function setCrdate($crdate) 
+    {
+        $this->crdate = $crdate;
     }
     
     /**

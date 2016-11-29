@@ -36,6 +36,18 @@
 			<trans-unit id="administration.newVenueRecord">
 				<source>New Event Venue</source>
 			</trans-unit>
+			<trans-unit id="administration.crdate">
+				<source>Creation date</source>
+			</trans-unit>
+			<trans-unit id="administration.noTeachers">
+				<source>No Teachers set for this event!</source>
+			</trans-unit>
+			<trans-unit id="administration.titleEventGroupView">
+				<source>All Event Groups</source>
+			</trans-unit>
+			<trans-unit id="administration.sendMailAll">
+				<source>Send E-Mail to all</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

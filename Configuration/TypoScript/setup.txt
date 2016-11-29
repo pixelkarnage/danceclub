@@ -95,3 +95,18 @@ plugin.tx_danceclub {
 		}
 	}
 }
+
+config.extbase{
+	persistance{
+		classes{
+			PlanT\Danceclub\Domain\Model\Booking{
+				mapping{
+					tableName = tx_danceclub_domain_model_booking
+					columns{
+						crdate.mapOnProperty = crdate
+					}
+				}
+			}
+		}
+	}
+}

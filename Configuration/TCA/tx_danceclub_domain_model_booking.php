@@ -18,12 +18,12 @@ return array(
 		'enablecolumns' => array(
 
 		),
-		'searchFields' => 'name,email,dance_style,student,comment,amount,invoice_amount,canceled,events,',
+		'searchFields' => 'name,crdate,email,dance_style,student,comment,amount,invoice_amount,canceled,events,',
 		//'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('danceclub') . 'Resources/Public/Icons/tx_danceclub_domain_model_booking.png'
 		'iconfile' => 'danceclub--sign-in'
 	),
 	'interface' => array(
-		'showRecordFieldList' => 'name, email, dance_style, student, comment, amount, invoice_amount, canceled, events',
+		'showRecordFieldList' => 'name, crdate, email, dance_style, student, comment, amount, invoice_amount, canceled, events',
 	),
 	'types' => array(
 		'1' => array('showitem' => '--div--;LLL:EXT:danceclub/Resources/Private/Language/locallang_db.xlf:tx_danceclub_domain_model_booking.tab.personal, canceled, student, name, email, dance_style, comment,
