@@ -63,6 +63,14 @@
 				<source>Show all E-Mails</source>
 				<target>Alle E-Mails anzeigen</target>
 			</trans-unit>
+			<trans-unit id="administration.noEventGroupTitle">
+				<source>No Event Groups found!</source>
+				<target>Kein Kursprogramm gefunden!</target>
+			</trans-unit>
+			<trans-unit id="administration.noEventGroupText">
+				<source>Please select a Storage-Page with EventGroup records stored in it.</source>
+				<target>Bitte einen Ordner wählen in dem ein Kursprogramm gespeichert ist.</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

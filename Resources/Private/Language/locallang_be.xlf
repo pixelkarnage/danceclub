@@ -47,6 +47,12 @@
 			</trans-unit>
 			<trans-unit id="administration.sendMailAll">
 				<source>Show all E-Mails</source>
+			</trans-unit>noEventGroupText
+			<trans-unit id="administration.noEventGroupTitle">
+				<source>No Event Groups found!</source>
+			</trans-unit>
+			<trans-unit id="administration.noEventGroupText">
+				<source>Please select a Storage Page with EventGroup records stored in it.</source>
 			</trans-unit>
 		</body>
 	</file>

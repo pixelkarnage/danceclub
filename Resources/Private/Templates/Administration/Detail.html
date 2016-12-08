@@ -23,7 +23,6 @@
 
 	<f:if condition="{events}">
 		<f:then>
-		<h1><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.titleEventGroupView" /></h1>
 		<f:for each="{events}" as="event">
 			<h2><core:icon identifier="danceclub-calendar-o" size="large" /> {event.name} <f:if condition="{event.teachers -> f:count()}>=1">
 				<f:then>
