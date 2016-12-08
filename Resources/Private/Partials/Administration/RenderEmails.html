@@ -1,0 +1,17 @@
+<div class="callout callout-info" id="showMails{event.uid}" style="display:none;">
+	<div class="media">
+		<div class="media-left">
+			<span class="fa-stack fa-lg callout-icon">
+				<i class="fa fa-circle fa-stack-2x"></i>
+				<i class="fa fa-info fa-stack-1x"></i>
+			</span>
+		</div>
+		<div class="media-body">
+			<h4 class="callout-title">Alle E-Mail Adressen der Teilnehmer dieses Kurses.</h4>
+			<div class="callout-body">
+				<p>Copy und Paste im Mailprogramm nur ins <b>BCC</b> feld! (= Blind Carbon Copy = Blindkopie)</p>
+				<p><f:for each="{event.bookings}" as="booking">{booking.email}; </f:for></p>
+			</div>
+		</div>
+	</div>
+</div>

@@ -60,8 +60,8 @@
 				<target>Alle Kursprogramme</target>
 			</trans-unit>
 			<trans-unit id="administration.sendMailAll">
-				<source>Send E-Mail to all</source>
-				<target>E-Mail an alle senden</target>
+				<source>Show all E-Mails</source>
+				<target>Alle E-Mails anzeigen</target>
 			</trans-unit>
 		</body>
 	</file>

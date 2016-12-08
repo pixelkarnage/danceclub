@@ -9,6 +9,17 @@
 <t:includeFile path="../typo3conf/ext/danceclub/Resources/Public/Css/administration.css" />
 <t:includeFile path="../typo3conf/ext/danceclub/Resources/Public/Js/sorttable.js" />
 
+<script language="javascript" type="text/javascript">
+			function showDetails(obj) {
+	    		var el = document.getElementById(obj);
+	   		 	if ( el.style.display != "none" ) {
+	        		el.style.display = 'none';
+	    		}
+	    		else {
+	       	 		el.style.display = '';
+	    		}
+			}
+</script>
 
 	<f:if condition="{events}">
 		<f:then>
@@ -22,11 +33,15 @@
 			</f:if></h2>
 			<h5>
 			<div class="btn-group" role="group">
-				<a class="btn btn-default" href="#"><core:icon identifier="danceclub-envelope" size="small" /> <f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.sendMailAll" /></a>
+
+				<f:if condition="{event.bookings}"><f:then>
+					<a class="btn btn-default" onclick="showDetails('showMails{event.uid}');"><core:icon identifier="danceclub-envelope" size="small" /> <f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.sendMailAll" /></a>
+				</f:then></f:if>
+
 				<f:if condition="{event.bookable}">
 					<f:then>
 						<a class="btn btn-default" href="#"><core:icon identifier="danceclub-plus" size="small" /> <f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.newBookingRecord" /></a>
-						<!--<a class="btn btn-default" href="#"><core:icon identifier="danceclub-cloud-download" size="small" /> Send List to Google Drive</a>-->
+						<a class="btn btn-default" href="#"><core:icon identifier="danceclub-cloud-download" size="small" /> Send List to Google Drive</a>
 					</f:then>
 				</f:if>
 				<t:be.editRecord class="btn btn-default" parameters="edit[tx_danceclub_domain_model_event][{event.uid}]=edit" title="Bearbeiten"><core:icon identifier="actions-open" size="small" /> {event.name}</t:be.editRecord>
@@ -35,6 +50,7 @@
 
 			<f:if condition="{event.bookings}">
 			<f:then>
+			<f:render partial="Administration/RenderEmails" arguments="{event:event}" />
 			<table class="table table-striped table-hover danceclub-eventgroup-list sortable" data-table="pages" id="danceclub-bookings-list">
 			<thead>
 				<th class="col-nowrap" nowrap="nowrap">#</th>

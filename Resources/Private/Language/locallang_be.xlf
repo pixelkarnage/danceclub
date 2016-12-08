@@ -46,7 +46,7 @@
 				<source>All Event Groups</source>
 			</trans-unit>
 			<trans-unit id="administration.sendMailAll">
-				<source>Send E-Mail to all</source>
+				<source>Show all E-Mails</source>
 			</trans-unit>
 		</body>
 	</file>
