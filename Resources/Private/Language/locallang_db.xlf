@@ -15,6 +15,9 @@
 			<trans-unit id="tx_danceclub_domain_model_event.tab.links">
 				<source>Links</source>
 			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.tab.calendarize">
+				<source>Date of Event</source>
+			</trans-unit>
 			<trans-unit id="tx_danceclub_domain_model_event.name">
 				<source>Name</source>
 			</trans-unit>

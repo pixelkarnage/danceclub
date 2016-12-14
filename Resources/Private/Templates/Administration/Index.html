@@ -5,6 +5,7 @@
 <f:section name="content">
     <t:includeFile path="../typo3conf/ext/danceclub/Resources/Public/Css/administration.css" />
     <t:includeFile path="../typo3conf/ext/danceclub/Resources/Public/Js/sorttable.js" />
+    <f:flashMessages renderMode="div" />
     <f:if condition="{eventGroups}">
         <f:then>
             <h1><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.titleEventGroupView" /></h1>
@@ -18,9 +19,7 @@
                             <th nowrap="nowrap" title="{f:translate(key:'LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.bookingCount')}">
                                 <f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.bookingCount" />
                             </th>
-                            <th nowrap="nowrap" title="{f:translate(key:'LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.bookable')}">
-                                <f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.bookable" />
-                            </th>
+                            <th nowrap="nowrap" title="{f:translate(key:'LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.bookable')}"></th>
                             <th class="col-icon" nowrap="nowrap"></th>
                         </tr>
                     </thead>
@@ -32,7 +31,8 @@
                                 </td>
 
                                 <td class="col-title" nowrap="nowrap">
-                                    <f:link.action action="detail" arguments="{eventGroup:eventGroup}">{eventGroup.title}</f:link.action>
+                                    <f:link.action action="detail" arguments="{eventGroup:eventGroup}">{eventGroup.title}</f:link.action><br />
+                                    
                                 </td>
                                 
                                 <td>
@@ -46,23 +46,25 @@
                                     <div class="btn-group" role="group">
                                         <f:if condition="{eventGroup.activateBooking}">
                                             <f:then>
-                                                <t:be.issueCommand class="btn btn-default t3js-record-hide" parameters="&data[tx_danceclub_domain_model_eventgroup][{eventGroup.uid}][activateBooking]=0">
-                                                    <core:icon identifier="actions-edit-hide" size="small" />
-                                                </t:be.issueCommand>
+                                                <a class="btn btn-default t3js-record-hide" title="{f:translate(key:'LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.deactivate')}" href="<bu:issueCommand parameters='&data[tx_danceclub_domain_model_eventgroup][{eventGroup.uid}][activate_booking]=0&returnUrl={returnUrl}' />" /><core:icon identifier="actions-edit-hide" size="small" /></a>
                                             </f:then>
                                             <f:else>
-                                                <t:be.issueCommand class="btn btn-default t3js-record-unhide" parameters="&data[tx_danceclub_domain_model_eventgroup][{eventGroup.uid}][activateBooking]=1">
-                                                    <core:icon identifier="actions-edit-unhide" size="small" />
-                                                </t:be.issueCommand>
+                                                <a class="btn btn-default t3js-record-hide" title="{f:translate(key:'LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.activate')}" href="<bu:issueCommand parameters='&data[tx_danceclub_domain_model_eventgroup][{eventGroup.uid}][activate_booking]=1&returnUrl={returnUrl}' />">
+                                                    <core:icon identifier="actions-edit-unhide" size="small" /></a>
                                             </f:else>
                                         </f:if>
+                                        <a class="btn btn-default" href="#" onclick="top.launchView('tx_danceclub_domain_model_eventgroup', {eventGroup.uid}); return false;" title="" data-original-title="Informationen anzeigen">
+                                            <core:icon identifier="actions-document-info" size="small" />
+                                        </a>
                                     </div>
+
                                 </td>
                                 <td class="col-control" nowrap="nowrap">
                                     <div class="btn-group" role="group">
-                                        <t:be.editRecord class="btn btn-default" parameters="edit[tx_danceclub_domain_model_eventgroup][{eventGroup.uid}]=edit" title="Kursprogramm bearbeiten">
+                                        <a class="btn btn-default" title="{f:translate(key:'LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.edit', arguments:'{eventGroup.name}')}" href="<bu:editRecord parameters='edit[tx_danceclub_domain_model_eventgroup][{eventGroup.uid}]=edit&returnUrl={returnUrl}' />">
                                             <core:icon identifier="actions-open" size="small" />
-                                        </t:be.editRecord>
+                                        </a>
+
                                     </div>
                                 </td>
                             </tr>

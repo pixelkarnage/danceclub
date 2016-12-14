@@ -1,37 +1,52 @@
 #ToDo
 #=====================
-Version 0.3 The Backend & Feature Parity:
-+ Backend: Admin Panel
+Version 0.3 Christas Update: The Backend & Feature Parity:
 
-  - Workflows:
-    1 As lia create a Kursprogramm
-      -> EvenGroup List view -> New Button
+      - pageinate eventgroup list!
 
-    2 As lio Check on registration status to send mails/cancel/ or stuff
-      -> List of EventGroup With events Summary type
-          
+      - Frontend: Show a list of upcoming events!
 
-      -> Detail view of event with bookings etc.
-        - Lio needs to create and update bookings (cancel, payment)
-          - Lio needs to be able to send mails to acknowkledge payment, cancel registration confirm message, etc.
-          >>>>>get a detail from link of list with all data
+      - returnUrl is kinda not working. Why?
+        -> Idea: it seems to work with the &data links
 
-+ Backend: Own Tab for Calendarize
->>>>> possible by adding TCA throu calendarize_danceclub?
+      - Show a summary of each event booking status!
+        - donut chart with: Leader type stats (lead/follow/both)
+        - donut chart with: paid/not paid
+        - Also numbers of how much money it should be in total
+        - 
 
-+ Implement Field for booking: email confirmation sent at
+      - Link to a google maps with the event location!
+        - new database field with longitude latitude?
+
+      - sort out icons ... 
+        - fontawesome in TCA with crtl -> iconfile seems to not work
+        - seems to work with iconclasses thingy ...
+
+      - Translation with parameter %s not working?
+        - idea?
+
+      - ERROR für alle alten, nicht mit extbase erstellten kursprogramme?
+        - Validation failed while trying to call PlanT\Danceclub\Controller\AdministrationController->detailAction().
+        - Welches datenbank feld fehlt?
 
 
 Version 0.4 The Frontend:
 + Implement Studenten Rabatt???
+- Migration to typo3 8.0?
+- integrate more/hide button for long event describtions
 
 Version 0.5
 + Backend: when making a registration only show the classes from the selected Kursprogramm! userProc EventGroup Tree
   - how to do this? foreach findByEventGroupUid
+  - only load classes from eventgroup with ajax? sounds like a good idea ...
+    - sort by year maybe
+
+
+
 + Implement Min Booking/ Max Bookings
 + Implement Force Partner Feature
 + Implement 
-
++ Implement Field for booking: email confirmation sent at
 
 Version ++:
 - Google API integration: https://www.typo3.net/forum/thematik/zeige/thema/120047/
@@ -39,15 +54,4 @@ Version ++:
 - Google Sheets API: https://developers.google.com/sheets/guides/values#writing_multiple_ranges
 - Make issueCommand work with Google Api
 - Integrate Newsletter Abo on booking
-- WEC Map Plugin
 
-
-
-===========================
-Backend Brainstorm
- It should have:
-    Bookings Tab:
-    - Overview per EventGroup or only Event. (two select fields that change accordingly?)
-    - Overview per bookable Event: Percentage of follow/lead bookings
-    - Send booking Confirmation mail button
-    - 

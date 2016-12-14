@@ -67,6 +67,8 @@ plugin.tx_danceclub {
 	}
 
 	settings {
+
+	
 		
 		booking {
 			

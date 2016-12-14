@@ -4,13 +4,13 @@
 		<header/>
 		<body>
 			<trans-unit id="administration.pageTitle">
-				<source>Dance Club Administration</source>
+				<source>Event administration</source>
 			</trans-unit>
 			<trans-unit id="administration.bookable">
-				<source>Bookable?</source>
+				<source>Enable event booking</source>
 			</trans-unit>
 			<trans-unit id="administration.bookingCount">
-				<source>Total Bookings</source>
+				<source>Bookings</source>
 			</trans-unit>
 			<trans-unit id="administration.true">
 				<source>Yes</source>
@@ -53,6 +53,27 @@
 			</trans-unit>
 			<trans-unit id="administration.noEventGroupText">
 				<source>Please select a Storage Page with EventGroup records stored in it.</source>
+			</trans-unit>
+			<trans-unit id="administration.activate">
+				<source>Activate booking</source>
+			</trans-unit>
+			<trans-unit id="administration.deactivate">
+				<source>Deactivate booking</source>
+			</trans-unit>
+			<trans-unit id="administration.edit">
+				<source>edit %s</source>
+			</trans-unit>
+			<trans-unit id="administration.delete">
+				<source>delete %s</source>
+			</trans-unit>
+			<trans-unit id="administration.lock">
+				<source>Cancel event</source>
+			</trans-unit>
+			<trans-unit id="administration.unlock">
+				<source>Restore event</source>
+			</trans-unit>
+			<trans-unit id="administration.canceled">
+				<source>Cenceled!</source>
 			</trans-unit>
 		</body>
 	</file>

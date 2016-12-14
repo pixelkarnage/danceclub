@@ -20,7 +20,8 @@ return array(
 			'endtime' => 'endtime',
 		),
 		'searchFields' => 'event_type,',
-		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('danceclub') . 'Resources/Public/Icons/tx_danceclub_domain_model_type.png'
+		//'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('danceclub') . 'Resources/Public/Icons/tx_danceclub_domain_model_type.png
+		'iconfile' => 'danceclub-archive'
 	),
 	'interface' => array(
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, event_type',

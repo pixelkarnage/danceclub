@@ -4,16 +4,16 @@
 		<header/>
 		<body>
 			<trans-unit id="administration.pageTitle">
-				<source>Dance Club Administration</source>
-				<target>Plan-T Kursadministration</target>
+				<source>Event administration</source>
+				<target>Kursadministration</target>
 			</trans-unit>
 			<trans-unit id="administration.bookable">
-				<source>Bookable?</source>
-				<target>Buchbar?</target>
+				<source>Enable event booking</source>
+				<target>Kursbuchung aktivieren</target>
 			</trans-unit>
 			<trans-unit id="administration.bookingCount">
-				<source>Total Bookings</source>
-				<target>Anzahl Buchungen</target>
+				<source>Bookings</source>
+				<target>Buchungen</target>
 			</trans-unit>
 			<trans-unit id="administration.true">
 				<source>Yes</source>
@@ -64,12 +64,44 @@
 				<target>Alle E-Mails anzeigen</target>
 			</trans-unit>
 			<trans-unit id="administration.noEventGroupTitle">
-				<source>No Event Groups found!</source>
+				<source>No event groups found!</source>
 				<target>Kein Kursprogramm gefunden!</target>
 			</trans-unit>
 			<trans-unit id="administration.noEventGroupText">
 				<source>Please select a Storage-Page with EventGroup records stored in it.</source>
 				<target>Bitte einen Ordner wählen in dem ein Kursprogramm gespeichert ist.</target>
+			</trans-unit>
+			<trans-unit id="administration.noEventTitle">
+				<source>No events found!</source>
+				<target>Keine Veranstaltungen gefunden!</target>
+			</trans-unit>
+			<trans-unit id="administration.noEventText">
+				<source>Please create an event, or select another event group.</source>
+				<target>Bitte eine Veranstaltung diesem Kursprogramm zuordnen, oder ein anderes Kursprogramm wählen.</target>
+			</trans-unit>
+			<trans-unit id="administration.activate">
+				<source>Activate booking</source>
+				<target>Buchung aktivieren</target>
+			</trans-unit>
+			<trans-unit id="administration.deactivate">
+				<source>Deactivate booking</source>
+				<target>Buchung deaktivieren</target>
+			</trans-unit>
+			<trans-unit id="administration.edit">
+				<source>edit %s</source>
+				<target>%s bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="administration.lock">
+				<source>Cancel</source>
+				<target>Abblasen!</target>
+			</trans-unit>
+			<trans-unit id="administration.unlock">
+				<source>Restore</source>
+				<target>Wiederherstellen</target>
+			</trans-unit>
+			<trans-unit id="administration.canceled">
+				<source>Cenceled!</source>
+				<target>Abgeblasen!</target>
 			</trans-unit>
 		</body>
 	</file>

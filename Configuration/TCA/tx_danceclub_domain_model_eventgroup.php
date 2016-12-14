@@ -19,7 +19,8 @@ return array(
 			'endtime' => 'endtime',
 		),
 		'searchFields' => 'title,subtitle,activate_booking,description,closed_booking_message,confirm_booking_message,events,',
-		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('danceclub') . 'Resources/Public/Icons/tx_danceclub_domain_model_eventgroup.png'
+		//'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('danceclub') . 'Resources/Public/Icons/tx_danceclub_domain_model_eventgroup.png'
+		'iconfile' => 'danceclub-calendar-o'
 	),
 	'interface' => array(
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, title, subtitle, activate_booking, description, closed_booking_message, confirm_booking_message,',

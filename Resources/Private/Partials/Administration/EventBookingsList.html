@@ -1,0 +1,48 @@
+{namespace core=TYPO3\CMS\Core\ViewHelpers}
+{namespace bu=TYPO3\CMS\Beuser\ViewHelpers}
+
+<table class="table table-striped table-hover danceclub-eventgroup-list sortable" data-table="pages" id="bookings{event.uid}" style="display:none;">
+<thead>
+	<th class="col-nowrap" nowrap="nowrap">#</th>
+	<th class="col-icon" nowrap="nowrap"></th>
+	<!--<th class="col-nowrap" nowrap="nowrap"><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.crdate" /></th>-->
+	<th class="col-title" nowrap="nowrap"><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_db.xlf:tx_danceclub_domain_model_booking.name" /></th>
+	<th class="col-nowrap" nowrap="nowrap"><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_db.xlf:tx_danceclub_domain_model_booking.dance_style" /></th>
+	<th class="col-nowrap" nowrap="nowrap"><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_db.xlf:tx_danceclub_domain_model_booking.student" /></th>
+	<th class="col-nowrap" nowrap="nowrap"><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_db.xlf:tx_danceclub_domain_model_booking.invoice_amount" /></th>
+	<th class="col-icon" nowrap="nowrap"></th>
+</thead>
+<tbody>
+	<f:for each="{event.bookings}" as="booking" iteration="counter">
+
+	<tr>
+		<td>{counter.cycle}.</td>
+		<td><core:icon identifier="danceclub-tag" size="small" /></td>
+		<!--td>{booking.crdate}</td>-->
+		<td>{booking.name} <f:if condition="{booking.canceled}">&nbsp;<span class="canceledstamp"><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.canceled" /></span></f:if></td>
+		<td><core:icon identifier="danceclub-danceStyle-{booking.danceStyle}" size="small" /><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_db.xlf:tx_danceclub_domain_model_booking.dance_style.{booking.danceStyle}" /></td>
+		<td><f:if condition="{booking.student}"><f:then><core:icon identifier="danceclub-check-square-o" size="small" /></f:then></f:if></td>
+		<td>{booking.invoiceAmount}.- Chf</td>
+		<td class="col-control" nowrap="nowrap">
+           	<div class="btn-group" role="group">
+          		<a class="btn btn-default" href="mailto:{booking.email}" title="E-Mail schreiben"><core:icon identifier="danceclub-envelope-o" size="small" /></a>
+          		<f:if condition="{booking.invoiceAmount}>0">
+          		<f:then>
+           			<a class="btn btn-default" href="<bu:issueCommand parameters='&data[tx_danceclub_domain_model_booking][{booking.uid}][invoice_amount]=0&returnUrl={returnUrl}' />" title="Hat voll bezahlt!"><core:icon identifier="danceclub-money" size="small" /></a>
+           		</f:then>
+           		</f:if>
+           		<f:if condition="{booking.canceled}">
+          		<f:then>
+                	<a class="btn btn-default t3js-record-unhide" title="{f:translate(key:'LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.unlock')}" href="<bu:issueCommand parameters='&data[tx_danceclub_domain_model_booking][{booking.uid}][canceled]=0&returnUrl={returnUrl}' />" /><core:icon identifier="danceclub-unlock" size="small" /></a>
+                </f:then>
+               	<f:else>
+               		<a class="btn btn-default t3js-record-unhide" title="{f:translate(key:'LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.lock')}" href="<bu:issueCommand parameters='&data[tx_danceclub_domain_model_booking][{booking.uid}][canceled]=1&returnUrl={returnUrl}' />" /><core:icon identifier="danceclub-lock" size="small" /></a>
+               	</f:else>
+           		</f:if>
+           		<a class="btn btn-default" href="<bu:editRecord parameters='edit[tx_danceclub_domain_model_booking][{booking.uid}]=edit&returnUrl={returnUrl}' />" title="<f:translate key='LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.edit' />"><core:icon identifier="actions-open" size="small" /></a>
+          	</div>
+		</td>
+	</tr>
+	</f:for>
+</tbody>
+</table>

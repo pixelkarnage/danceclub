@@ -12,6 +12,18 @@ plugin.tx_danceclub_danceclub {
 		# cat=plugin.tx_danceclub_danceclub//a; type=string; label=Default storage PID
 		storagePid =
 	}
+	settings {
+		# cat=module.tx_danceclub_danceclubadmin//a; type=string; label=Default storage PID
+		eventGroupStoragePid =
+		# cat=module.tx_danceclub_danceclubadmin//a; type=string; label=Default storage PID
+		eventStoragePid =
+		# cat=module.tx_danceclub_danceclubadmin//a; type=string; label=Default storage PID
+		bookingStoragePid =
+		# cat=module.tx_danceclub_danceclubadmin//a; type=string; label=Default storage PID
+		typeStoragePid =
+		# cat=module.tx_danceclub_danceclubadmin//a; type=string; label=Default storage PID
+		venueStoragePid =
+	}
 }
 
 module.tx_danceclub_danceclubadmin {
@@ -25,6 +37,28 @@ module.tx_danceclub_danceclubadmin {
 	}
 	persistence {
 		# cat=module.tx_danceclub_danceclubadmin//a; type=string; label=Default storage PID
-		storagePid =
+		eventGroupStoragePid =
+		# cat=module.tx_danceclub_danceclubadmin//a; type=string; label=Default storage PID
+		eventGroupStoragePid =
+		# cat=module.tx_danceclub_danceclubadmin//a; type=string; label=Default storage PID
+		eventStoragePid =
+		# cat=module.tx_danceclub_danceclubadmin//a; type=string; label=Default storage PID
+		bookingStoragePid =
+		# cat=module.tx_danceclub_danceclubadmin//a; type=string; label=Default storage PID
+		typeStoragePid =
+		# cat=module.tx_danceclub_danceclubadmin//a; type=string; label=Default storage PID
+		venueStoragePid =
+	}
+	settings {
+		# cat=module.tx_danceclub_danceclubadmin//a; type=string; label=Default storage PID
+		eventGroupStoragePid =
+		# cat=module.tx_danceclub_danceclubadmin//a; type=string; label=Default storage PID
+		eventStoragePid =
+		# cat=module.tx_danceclub_danceclubadmin//a; type=string; label=Default storage PID
+		bookingStoragePid =
+		# cat=module.tx_danceclub_danceclubadmin//a; type=string; label=Default storage PID
+		typeStoragePid =
+		# cat=module.tx_danceclub_danceclubadmin//a; type=string; label=Default storage PID
+		venueStoragePid =
 	}
 }

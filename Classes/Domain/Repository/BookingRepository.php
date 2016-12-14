@@ -55,11 +55,7 @@ class BookingRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $query->getQuerySettings()->setIgnoreEnableFields(true)->setIncludeDeleted(false);
         }
 
-        $constraints = array();
-        $constraints[] = $query->equals('canceled', false);
-        $constraints[] = $query->contains('events', $event);
-
-        $query->matching($query->logicalAnd($constraints));
+        $query->matching($query->contains('events', $event));
 
         return $query->execute();
     }

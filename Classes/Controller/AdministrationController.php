@@ -79,6 +79,8 @@ class AdministrationController extends \PlanT\Danceclub\Controller\AbstractContr
         /** @var BackendTemplateView $view */
         parent::initializeView($view);
         $view->getModuleTemplate()->getDocHeaderComponent()->setMetaInformation([]);
+        
+        $this->view->getModuleTemplate()->setFlashMessageQueue($this->controllerContext->getFlashMessageQueue());
 
         $pageRenderer = $this->view->getModuleTemplate()->getPageRenderer();
         $pageRenderer->loadRequireJsModule('TYPO3/CMS/Backend/ClickMenu');
@@ -231,17 +233,16 @@ class AdministrationController extends \PlanT\Danceclub\Controller\AbstractContr
      */
     public function detailAction(\PlanT\Danceclub\Domain\Model\EventGroup $eventGroup)
     {
-        //rawurlencode(BackendUtilityCore::getModuleUrl('web_danceclubadmin')));
         $events = $this->eventRepository->findByEventGroups($eventGroup, NULL, false, true);
         foreach ($events as $event){
-            $event->setQueryBookings($this->bookingRepository->findBookingsOfEvent($event));
+            $bookings = $this->bookingRepository->findBookingsOfEvent($event);
+            $event->setBookingsByQuery($bookings);
         }
-        
-
-       //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($events);
+    
+       //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($eventGroup);
 
         $assignedValues = [
-            //'eventGroup' => $eventGroup,
+            'eventGroup' => $eventGroup,
             'events' => $events,
             'eventDates' => $this->getEventOccurences($events),
             'danceStyleOptions' => $this->getDanceStyleOptions(),

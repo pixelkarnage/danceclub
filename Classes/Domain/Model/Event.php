@@ -607,7 +607,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param $queryResult The Booking to be removed
      * @return void
      */
-    public function setQueryBookings($queryResult)
+    public function setBookingsByQuery($queryResult)
     {
         $this->bookings = $queryResult;
     }

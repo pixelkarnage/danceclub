@@ -87,6 +87,10 @@
 				<source>Course Booking</source>
 				<target>Kursbuchung</target>
 			</trans-unit>
+			<trans-unit id="tx_danceclub_domain_model_event.tab.calendarize">
+				<source>Date of Event</source>
+				<target>Datum der Veranstaltung</target>
+			</trans-unit>
 			<trans-unit id="tx_danceclub_domain_model_eventgroup.title">
 				<source>Title</source>
 				<target>Titel</target>
