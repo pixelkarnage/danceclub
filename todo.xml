@@ -2,7 +2,7 @@
 #=====================
 Version 0.3 Christas Update: The Backend & Feature Parity:
 
-      - pageinate eventgroup list!
+      - remove an index of an event, when it is canceled!
 
       - Frontend: Show a list of upcoming events!
 
@@ -22,8 +22,12 @@ Version 0.3 Christas Update: The Backend & Feature Parity:
         - fontawesome in TCA with crtl -> iconfile seems to not work
         - seems to work with iconclasses thingy ...
 
+      - Backend top menu: favoriten? neuer event etc?
+
       - Translation with parameter %s not working?
         - idea?
+
+      - <f:count subject="{backendUsers}" /> !!!!!!!!!!!!!!!
 
       - ERROR für alle alten, nicht mit extbase erstellten kursprogramme?
         - Validation failed while trying to call PlanT\Danceclub\Controller\AdministrationController->detailAction().
@@ -32,8 +36,9 @@ Version 0.3 Christas Update: The Backend & Feature Parity:
 
 Version 0.4 The Frontend:
 + Implement Studenten Rabatt???
-- Migration to typo3 8.0?
 - integrate more/hide button for long event describtions
+- Migration to typo3 8.0?
+
 
 Version 0.5
 + Backend: when making a registration only show the classes from the selected Kursprogramm! userProc EventGroup Tree

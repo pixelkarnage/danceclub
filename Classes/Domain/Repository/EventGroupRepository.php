@@ -81,7 +81,7 @@ class EventGroupRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      *
      * @return \PlanT\Danceclub\Domain\Model\EventGroup
      */
-    public function findAllAsArray()
+    public function findAllCurrentStoragePage()
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(true);
@@ -91,6 +91,6 @@ class EventGroupRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 'uid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING
             )
         );
-        return $query->execute()->toArray();
+        return $query->execute();
     }
 }

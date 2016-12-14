@@ -1,6 +1,8 @@
 {namespace t=PlanT\Danceclub\ViewHelpers}
+{namespace be=TYPO3\CMS\Backend\ViewHelpers}
 {namespace core=TYPO3\CMS\Core\ViewHelpers}
 {namespace bu=TYPO3\CMS\Beuser\ViewHelpers}
+
 <f:layout name="Backend/Default" />
 <f:section name="content">
     <t:includeFile path="../typo3conf/ext/danceclub/Resources/Public/Css/administration.css" />
@@ -9,6 +11,9 @@
     <f:if condition="{eventGroups}">
         <f:then>
             <h1><f:translate key="LLL:EXT:danceclub/Resources/Private/Language/locallang_be.xlf:administration.titleEventGroupView" /></h1>
+
+            <f:be.widget.paginate objects="{eventGroups}" as="paginatedEventGroups" configuration="{itemsPerPage: 10, insertBelow: 1}">
+
             <div class="table-fit">
                 <table class="table table-striped table-hover danceclub-eventgroup-list sortable" data-table="pages" id="danceclub-eventgroup-list">
                     <thead>
@@ -24,7 +29,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <f:for each="{eventGroups}" as="eventGroup" key="extensionKey">
+                        <f:for each="{paginatedEventGroups}" as="eventGroup" key="extensionKey">
                             <tr>
                                 <td class="col-icon" nowrap="nowrap">
                                     <core:icon identifier="danceclub-archive" size="small" />
@@ -72,6 +77,8 @@
                     </tbody>
                 </table>
             </div>
+
+            </f:be.widget.paginate>
 
         </f:then>
         <f:else>

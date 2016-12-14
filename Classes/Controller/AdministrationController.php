@@ -197,7 +197,7 @@ class AdministrationController extends \PlanT\Danceclub\Controller\AbstractContr
      */
     public function indexAction()
     {
-        $eventGroups = $this->eventGroupRepository->findAllAsArray();
+        $eventGroups = $this->eventGroupRepository->findAllCurrentStoragePage();
         //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($eventGroups);
         foreach($eventGroups as $eventGroup){
             $totalBookingCount = 0;
@@ -213,7 +213,7 @@ class AdministrationController extends \PlanT\Danceclub\Controller\AbstractContr
             $eventGroup->setBookingCount($totalBookingCount);
          }
 
-        //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump(rawurlencode(BackendUtilityCore::getModuleUrl('web_danceclubadmin')));
+        //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($eventGroups);
         $assignedValues = [
             'eventGroups' => $eventGroups,
             'returnUrl' => rawurlencode(BackendUtilityCore::getModuleUrl('web_DanceclubDanceclubadmin'))
